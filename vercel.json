@@ -11,7 +11,13 @@
     }
   ],
   "routes": [
-    { "src": "/$", "dest": "/index.html" },
-    { "src": "/convert", "dest": "/converter.html" }
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/convert",
+      "dest": "/converter.html"
+    }
   ]
 }
