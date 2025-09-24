@@ -12,6 +12,6 @@
   ],
   "routes": [
     { "src": "/", "dest": "/index.html" },
-    { "src": "/convert", "dest": "/converter.html" }
+    { "src": "/convert", "status": 302, "headers": { "Location": "https://convert.image-cut.com" } }
   ]
 }
