@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "converter.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/index.html", "dest": "/" },
+    { "src": "/converter.html", "dest": "/convert" }
+  ]
+}
