@@ -405,13 +405,15 @@ input[type="file"] {
   </div>
 
   <script>
-    // highlight active nav button
-    const path = window.location.pathname;
-    if (path.includes("background-remover")) {
-      document.getElementById("btnBgRemover").classList.add("active");
-    } else {
-      document.getElementById("btnImageCut").classList.add("active");
-    }
+// highlight active nav button
+const currentHost = window.location.hostname;
+if (currentHost === "convert.image-cut.com") {
+  document.getElementById("btnConverter").classList.add("active");
+  document.getElementById("btnImageCut").classList.remove("active");
+} else {
+  document.getElementById("btnImageCut").classList.add("active");
+  document.getElementById("btnConverter").classList.remove("active");
+}
 
     document.addEventListener('DOMContentLoaded', function() {
       const imageInput = document.getElementById('imageInput');
@@ -523,5 +525,6 @@ input[type="file"] {
   </script>
 </body>
 </html>
+
 
 
