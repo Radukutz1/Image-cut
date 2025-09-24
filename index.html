@@ -1,591 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617954284506964"
-     crossorigin="anonymous"></script>
-    <title>Image Cut</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0e27, #1a1a2e, #16213e, #000000);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
-        
-        .container {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-        
-        h1 {
-            color: #ffffff;
-            margin-top: 0;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-            border-radius: 3px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 15px;
-            font-weight: 500;
-            text-align: center;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-        
-        .file-input-wrapper {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            cursor: pointer;
-        }
-        
-        input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            z-index: 2;
-        }
-        
-        .file-input-button {
-            display: inline-block;
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
-            height: 46px;
-            line-height: 22px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .file-input-wrapper:hover .file-input-button {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: #a6c1ee;
-            color: #a6c1ee;
-        }
-        
-        .file-name {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
-        }
-        
-        select, input[type="number"] {
-            padding: 12px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            box-sizing: border-box;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            width: 100%;
-            transition: all 0.3s ease;
-            height: 46px;
-            line-height: 22px;
-        }
-        
-        select:hover, input[type="number"]:hover {
-            color: #a6c1ee;
-            border-color: #a6c1ee;
-        }
-        
-        select:focus, input[type="number"]:focus {
-            outline: none;
-            border-color: #a6c1ee;
-            box-shadow: 0 0 10px rgba(166, 193, 238, 0.5);
-        }
-        
-        input[type="number"]::placeholder {
-            color: #cccccc;
-            opacity: 1;
-        }
-        
-        .size-options {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-        
-        .preset-sizes, .custom-size {
-            width: 100%;
-        }
-        
-        .custom-size {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .custom-size input {
-            width: 120px;
-        }
-        
-        .custom-resolution-text {
-            color: rgba(255, 255, 255, 0.7);
-            margin: 5px 0;
-            font-size: 1rem;
-            font-style: italic;
-        }
-        
-        button {
-            background: linear-gradient(90deg, #1a1a2e, #16213e);
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            letter-spacing: 0.5px;
-        }
-        
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(90deg, #16213e, #0a0e27);
-        }
-        
-        button:disabled {
-            background: rgba(255, 255, 255, 0.2);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .preview-container {
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .preview-container img {
-            max-width: 100%;
-            max-height: 300px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .canvas-container {
-            display: none;
-        }
-        
-        .result-container {
-            margin-top: 30px;
-            text-align: center;
-            display: none;
-        }
-        
-        .result-container img {
-            max-width: 100%;
-            max-height: 300px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .action-buttons {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .notification {
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 10px;
-            display: none;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .error {
-            background-color: rgba(255, 87, 87, 0.2);
-            color: #ffcccc;
-            border: 1px solid rgba(255, 87, 87, 0.4);
-        }
-        
-        .success {
-            background-color: rgba(87, 255, 87, 0.2);
-            color: #ccffcc;
-            border: 1px solid rgba(87, 255, 87, 0.4);
-        }
-        
-        p {
-            text-align: center;
-            margin: 15px 0;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        h3 {
-            color: #ffffff;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .icon {
-            margin-right: 8px;
-        }
-        
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .container {
-                padding: 25px;
-                max-width: 90%;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .custom-size {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .custom-size input {
-                width: 100%;
-            }
-            
-            button {
-                width: 100%;
-                padding: 12px 20px;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .action-buttons button {
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-                max-width: 95%;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .form-group {
-                margin-bottom: 20px;
-            }
-            
-            label {
-                font-size: 1rem;
-            }
-            
-            .file-input-button, select, input[type="number"] {
-                padding: 10px 12px;
-                height: 42px;
-                font-size: 0.9rem;
-            }
-            
-            button {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .preview-container img, .result-container img {
-                max-height: 200px;
-            }
-            
-            .notification {
-                font-size: 0.9rem;
-                padding: 12px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Cut</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0e27, #1a1a2e, #16213e, #000000);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+select {
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* darker background */
+    color: #ffffff; /* white text */
+    width: 100%;
+    transition: all 0.3s ease;
+    height: 46px;
+    line-height: 22px;
+    appearance: none; /* hides default dropdown arrow */
+}
+
+/* Dropdown options */
+select option {
+    background-color: #1a1a2e; /* dark dropdown background */
+    color: #ffffff; /* white text */
+}
+
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    h1 {
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      border-radius: 3px;
+    }
+
+    /* navigation bar */
+    .top-nav {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+.nav-btn {
+  background: transparent;
+  border: 2px solid #a6c1ee;
+  color: #ffffff; /* white text */
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(166,193,238,0.5);
+}
+
+.nav-btn:hover {
+  background: #a6c1ee;
+  color: #ffffff; /* stay white on hover */
+  box-shadow: 0 0 20px rgba(166,193,238,0.9);
+  transform: translateY(-3px) scale(1.05);
+}
+
+
+.nav-btn:hover {
+  background: #a6c1ee;
+  color: #0a0e27;
+  box-shadow: 0 0 20px rgba(166,193,238,0.9);
+  transform: translateY(-3px) scale(1.05);
+}
+    .nav-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(90deg, #16213e, #0a0e27);
+      border: 2px solid #a6c1ee;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: 500;
+      text-align: center;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+ .file-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Add hover effect to the wrapper instead of directly to the button */
+.file-input-wrapper:hover .file-input-button {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-input-button {
+  display: inline-block;
+  padding: 12px 15px;
+  background: linear-gradient(90deg, #1a1a2e, #16213e);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  height: 46px;
+  line-height: 22px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+    .file-input-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .file-name {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+    }
+
+    select, input[type="number"] {
+      padding: 12px 15px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      background: linear-gradient(90deg, #1a1a2e, #16213e);
+      color: #ffffff;
+      width: 100%;
+      transition: all 0.3s ease;
+      height: 46px;
+      line-height: 22px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    select:hover, input[type="number"]:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .size-options {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .preset-sizes {
+      width: 60%;
+    }
+
+    .custom-size {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .custom-size input {
+      width: 120px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #1a1a2e, #16213e);
+      color: rgb(250, 247, 247);
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    button:disabled {
+      background: rgba(255, 255, 255, 0.2);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .preview-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .preview-container img {
+      max-width: 100%;
+      max-height: 300px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .result-container {
+      margin-top: 30px;
+      text-align: center;
+      display: none;
+    }
+
+    .result-container img {
+      max-width: 100%;
+      max-height: 300px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .notification {
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      display: none;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .error {
+      background-color: rgba(255, 87, 87, 0.2);
+      color: #ffcccc;
+      border: 1px solid rgba(255, 87, 87, 0.4);
+    }
+
+    .success {
+      background-color: rgba(87, 255, 87, 0.2);
+      color: #ccffcc;
+      border: 1px solid rgba(87, 255, 87, 0.4);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1><i class="fas fa-cut"></i> Image Cut</h1>
-        
-        <div class="notification" id="notification"></div>
-        
-        <div class="form-group">
-            <label for="imageInput"><i class="fas fa-image icon"></i> Select an image:</label>
-            <div class="file-input-wrapper">
-                <input type="file" id="imageInput" accept="image/*">
-                <div class="file-input-button" id="fileInputButton">Choose file</div>
-                <div class="file-name" id="fileName">No file chosen</div>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label><i class="fas fa-expand-arrows-alt icon"></i> Resize Options:</label>
-            <div class="size-options">
-                <div class="preset-sizes">
-                    <select id="presetSizes">
-                        <option value="">Select a preset size</option>
-                        <option value="100,100">Thumbnail (100×100)</option>
-                        <option value="400,300">Small (400×300)</option>
-                        <option value="800,600">Medium (800×600)</option>
-                        <option value="1200,900">Large (1200×900)</option>
-                        <option value="1920,1080">HD (1920×1080)</option>
-                        <option value="1280,1280">Square (1280×1280)</option>
-                    </select>
-                </div>
-                
-                <div class="custom-resolution-text">Or add a custom resolution</div>
-                
-                <div class="custom-size">
-                    <input type="number" id="customWidth" placeholder="Width" min="1">
-                    <span>×</span>
-                    <input type="number" id="customHeight" placeholder="Height" min="1">
-                </div>
-            </div>
-        </div>
-        
-        <div class="action-buttons">
-            <button id="resizeButton" disabled><i class="fas fa-magic icon"></i> Resize Image</button>
-        </div>
-        
-        <div class="preview-container" id="previewContainer">
-            <h3 id="previewTitle">Preview</h3>
-            <img id="previewImage" alt="Preview" style="display: none;">
-            <p id="originalDimensions" style="display: none;"></p>
-        </div>
-        
-        <div class="result-container" id="resultContainer">
-            <h3><i class="fas fa-file-export icon"></i> Resized Image:</h3>
-            <img id="resultImage" alt="Resized">
-            <p id="newDimensions"></p>
-            <div class="action-buttons">
-                <button id="downloadButton"><i class="fas fa-download icon"></i> Download</button>
-            </div>
-        </div>
-        
-        <div class="canvas-container">
-            <canvas id="canvas"></canvas>
-        </div>
+  <!-- navigation -->
+  <div class="top-nav">
+    <button class="nav-btn" id="btnImageCut" onclick="location.href='index.html'"><i class="fas fa-scissors"></i> Image Cut</button>
+    <button class="nav-btn" id="btnBgRemover" onclick="location.href='converter.html'"><i class="fas fa-eraser"></i> Background Remover</button>
+  </div>
+
+  <div class="container">
+    <h1><i class="fas fa-cut"></i> Image Cut</h1>
+
+    <div class="notification" id="notification"></div>
+
+    <div class="form-group">
+      <label for="imageInput"><i class="fas fa-image icon"></i> Select an image:</label>
+      <div class="file-input-wrapper">
+        <input type="file" id="imageInput" accept="image/*">
+        <div class="file-input-button" id="fileInputButton">Choose file</div>
+        <div class="file-name" id="fileName">No file chosen</div>
+      </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const imageInput = document.getElementById('imageInput');
-            const fileInputButton = document.getElementById('fileInputButton');
-            const fileName = document.getElementById('fileName');
-            const presetSizes = document.getElementById('presetSizes');
-            const customWidth = document.getElementById('customWidth');
-            const customHeight = document.getElementById('customHeight');
-            const resizeButton = document.getElementById('resizeButton');
-            const downloadButton = document.getElementById('downloadButton');
-            const previewImage = document.getElementById('previewImage');
-            const previewTitle = document.getElementById('previewTitle');
-            const resultImage = document.getElementById('resultImage');
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            const previewContainer = document.getElementById('previewContainer');
-            const resultContainer = document.getElementById('resultContainer');
-            const originalDimensions = document.getElementById('originalDimensions');
-            const newDimensions = document.getElementById('newDimensions');
-            const notification = document.getElementById('notification');
-            
-            let originalImage = null;
-            
-            // Show notification
-            function showNotification(message, isError = false) {
-                notification.textContent = message;
-                notification.className = isError ? 'notification error' : 'notification success';
-                notification.style.display = 'block';
-                
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 5000);
-            }
-            
-            // Update file input display
-            imageInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                
-                if (file) {
-                    fileName.textContent = file.name;
-                    
-                    if (!file.type.match('image.*')) {
-                        showNotification('Please select an image file.', true);
-                        return;
-                    }
-                    
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(event) {
-                        previewImage.src = event.target.result;
-                        
-                        previewImage.onload = function() {
-                            originalImage = previewImage;
-                            originalDimensions.textContent = `Dimensions: ${originalImage.naturalWidth} × ${originalImage.naturalHeight} pixels`;
-                            previewImage.style.display = 'block';
-                            originalDimensions.style.display = 'block';
-                            previewTitle.innerHTML = '<i class="fas fa-file-image icon"></i> Original Image:';
-                            resizeButton.disabled = false;
-                            resultContainer.style.display = 'none';
-                        };
-                    };
-                    
-                    reader.readAsDataURL(file);
-                } else {
-                    fileName.textContent = 'No file chosen';
-                    previewImage.style.display = 'none';
-                    originalDimensions.style.display = 'none';
-                    previewTitle.textContent = 'Preview';
-                    resizeButton.disabled = true;
-                }
-            });
-            
-            // Handle preset size selection
-            presetSizes.addEventListener('change', function() {
-                if (this.value) {
-                    const [width, height] = this.value.split(',');
-                    customWidth.value = width;
-                    customHeight.value = height;
-                }
-            });
-            
-            // Handle custom width input
-            customWidth.addEventListener('input', function() {
-                if (this.value && presetSizes.value) {
-                    presetSizes.value = '';
-                }
-            });
-            
-            // Handle custom height input
-            customHeight.addEventListener('input', function() {
-                if (this.value && presetSizes.value) {
-                    presetSizes.value = '';
-                }
-            });
-            
-            // Resize image
-            resizeButton.addEventListener('click', function() {
-                if (!originalImage) {
-                    showNotification('Please select an image first.', true);
-                    return;
-                }
-                
-                const width = parseInt(customWidth.value);
-                const height = parseInt(customHeight.value);
-                
-                if (!width || !height) {
-                    showNotification('Please enter valid dimensions.', true);
-                    return;
-                }
-                
-                if (width <= 0 || height <= 0) {
-                    showNotification('Dimensions must be positive numbers.', true);
-                    return;
-                }
-                
-                // Set canvas dimensions
-                canvas.width = width;
-                canvas.height = height;
-                
-                // Draw resized image
-                ctx.drawImage(originalImage, 0, 0, width, height);
-                
-                // Show result
-                resultImage.src = canvas.toDataURL('image/png');
-                newDimensions.textContent = `Dimensions: ${width} × ${height} pixels`;
-                resultContainer.style.display = 'block';
-                
-                showNotification('Image resized successfully!');
-            });
-            
-            // Download resized image
-            downloadButton.addEventListener('click', function() {
-                if (!resultImage.src) {
-                    showNotification('No resized image to download.', true);
-                    return;
-                }
-                
-                const link = document.createElement('a');
-                link.download = 'resized-image.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-                
-                showNotification('Image downloaded successfully!');
-            });
-        });
-    </script>
+    <div class="form-group">
+      <label><i class="fas fa-expand-arrows-alt icon"></i> Resize Options:</label>
+      <div class="size-options">
+        <div class="preset-sizes">
+          <select id="presetSizes">
+            <option value="">Select a preset size</option>
+            <option value="100,100">Thumbnail (100×100)</option>
+            <option value="400,300">Small (400×300)</option>
+            <option value="800,600">Medium (800×600)</option>
+            <option value="1200,900">Large (1200×900)</option>
+            <option value="1920,1080">HD (1920×1080)</option>
+            <option value="1280,1280">Square (1280×1280)</option>
+          </select>
+        </div>
+
+        <div class="custom-size">
+          <input type="number" id="customWidth" placeholder="Width" min="1">
+          <span>×</span>
+          <input type="number" id="customHeight" placeholder="Height" min="1">
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button id="resizeButton" disabled><i class="fas fa-magic icon"></i> Resize Image</button>
+    </div>
+
+    <div class="preview-container" id="previewContainer">
+      <h3 id="previewTitle">Preview</h3>
+      <img id="previewImage" alt="Preview" style="display: none;">
+      <p id="originalDimensions" style="display: none;"></p>
+    </div>
+
+    <div class="result-container" id="resultContainer">
+      <h3><i class="fas fa-file-export icon"></i> Resized Image:</h3>
+      <img id="resultImage" alt="Resized">
+      <p id="newDimensions"></p>
+      <div class="action-buttons">
+        <button id="downloadButton"><i class="fas fa-download icon"></i> Download</button>
+      </div>
+    </div>
+
+    <canvas id="canvas" style="display:none"></canvas>
+  </div>
+
+  <script>
+    // highlight active nav button
+    const path = window.location.pathname;
+    if (path.includes("background-remover")) {
+      document.getElementById("btnBgRemover").classList.add("active");
+    } else {
+      document.getElementById("btnImageCut").classList.add("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const imageInput = document.getElementById('imageInput');
+      const fileName = document.getElementById('fileName');
+      const presetSizes = document.getElementById('presetSizes');
+      const customWidth = document.getElementById('customWidth');
+      const customHeight = document.getElementById('customHeight');
+      const resizeButton = document.getElementById('resizeButton');
+      const downloadButton = document.getElementById('downloadButton');
+      const previewImage = document.getElementById('previewImage');
+      const previewTitle = document.getElementById('previewTitle');
+      const resultImage = document.getElementById('resultImage');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const previewContainer = document.getElementById('previewContainer');
+      const resultContainer = document.getElementById('resultContainer');
+      const originalDimensions = document.getElementById('originalDimensions');
+      const newDimensions = document.getElementById('newDimensions');
+      const notification = document.getElementById('notification');
+
+      let originalImage = null;
+
+      function showNotification(message, isError = false) {
+        notification.textContent = message;
+        notification.className = isError ? 'notification error' : 'notification success';
+        notification.style.display = 'block';
+        setTimeout(() => { notification.style.display = 'none'; }, 5000);
+      }
+
+      imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          fileName.textContent = file.name;
+          if (!file.type.match('image.*')) {
+            showNotification('Please select an image file.', true);
+            return;
+          }
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            previewImage.src = event.target.result;
+            previewImage.onload = function() {
+              originalImage = previewImage;
+              originalDimensions.textContent = `Dimensions: ${originalImage.naturalWidth} × ${originalImage.naturalHeight}`;
+              previewImage.style.display = 'block';
+              originalDimensions.style.display = 'block';
+              previewTitle.innerHTML = '<i class="fas fa-file-image icon"></i> Original Image:';
+              resizeButton.disabled = false;
+              resultContainer.style.display = 'none';
+            };
+          };
+          reader.readAsDataURL(file);
+        } else {
+          fileName.textContent = 'No file chosen';
+          previewImage.style.display = 'none';
+          originalDimensions.style.display = 'none';
+          previewTitle.textContent = 'Preview';
+          resizeButton.disabled = true;
+        }
+      });
+
+      presetSizes.addEventListener('change', function() {
+        if (this.value) {
+          const [width, height] = this.value.split(',');
+          customWidth.value = width;
+          customHeight.value = height;
+        }
+      });
+
+      customWidth.addEventListener('input', function() {
+        if (this.value && presetSizes.value) presetSizes.value = '';
+      });
+
+      customHeight.addEventListener('input', function() {
+        if (this.value && presetSizes.value) presetSizes.value = '';
+      });
+
+      resizeButton.addEventListener('click', function() {
+        if (!originalImage) {
+          showNotification('Please select an image first.', true);
+          return;
+        }
+        const width = parseInt(customWidth.value);
+        const height = parseInt(customHeight.value);
+        if (!width || !height || width <= 0 || height <= 0) {
+          showNotification('Please enter valid dimensions.', true);
+          return;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(originalImage, 0, 0, width, height);
+        resultImage.src = canvas.toDataURL('image/png');
+        newDimensions.textContent = `Dimensions: ${width} × ${height}`;
+        resultContainer.style.display = 'block';
+        showNotification('Image resized successfully!');
+      });
+
+      downloadButton.addEventListener('click', function() {
+        if (!resultImage.src) {
+          showNotification('No resized image to download.', true);
+          return;
+        }
+        const link = document.createElement('a');
+        link.download = 'resized-image.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        showNotification('Image downloaded successfully!');
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
