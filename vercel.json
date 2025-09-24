@@ -1,17 +1,13 @@
 {
   "rewrites": [
     {
-      "source": "/",
-      "has": [
-        { "type": "host", "value": "image-cut.com" }
-      ],
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "image-cut.com" }],
       "destination": "/index.html"
     },
     {
-      "source": "/",
-      "has": [
-        { "type": "host", "value": "convert.image-cut.com" }
-      ],
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
       "destination": "/converter.html"
     }
   ]
