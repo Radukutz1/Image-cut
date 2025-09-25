@@ -1,7 +1,19 @@
 {
   "version": 2,
   "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/convert", "dest": "/converter.html" }
+    {
+      "src": "/(.*)",
+      "has": [{ "type": "host", "value": "image-cut.com" }],
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
+      "dest": "/converter.html"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    }
   ]
 }
