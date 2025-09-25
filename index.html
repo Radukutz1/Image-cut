@@ -343,6 +343,28 @@ input[type="file"] {
       color: #ccffcc;
       border: 1px solid rgba(87, 255, 87, 0.4);
     }
+     /* ✅ Style for optgroup labels */
+  select optgroup {
+    background-color: #0a0e27; /* dark background */
+    color: #a6c1ee; /* light blue for labels */
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* ✅ Style for dropdown options */
+  select option {
+    background-color: #1a1a2e; /* slightly lighter background */
+    color: #ffffff; /* white text */
+    font-weight: 400;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
   </style>
 </head>
 <body>
@@ -375,15 +397,50 @@ input[type="file"] {
       <label><i class="fas fa-expand-arrows-alt icon"></i> Resize Options:</label>
       <div class="size-options">
         <div class="preset-sizes">
-          <select id="presetSizes">
-            <option value="">Select a preset size</option>
-            <option value="100,100">Thumbnail (100×100)</option>
-            <option value="400,300">Small (400×300)</option>
-            <option value="800,600">Medium (800×600)</option>
-            <option value="1200,900">Large (1200×900)</option>
-            <option value="1920,1080">HD (1920×1080)</option>
-            <option value="1280,1280">Square (1280×1280)</option>
-          </select>
+        <select id="presetSizes">
+  <option value="">Select a preset size</option>
+
+  <optgroup label="General">
+    <option value="100,100">Thumbnail (100×100)</option>
+    <option value="400,300">Small (400×300)</option>
+    <option value="800,600">Medium (800×600)</option>
+    <option value="1200,900">Large (1200×900)</option>
+    <option value="1920,1080">HD (1920×1080)</option>
+    <option value="1280,1280">Square (1280×1280)</option>
+  </optgroup>
+
+  <optgroup label="Instagram">
+    <option value="320,320">Profile Picture (320×320)</option>
+    <option value="1080,1080">Post Square (1080×1080)</option>
+    <option value="1080,1350">Post Portrait (1080×1350)</option>
+    <option value="1080,1920">Story/Reel (1080×1920)</option>
+  </optgroup>
+
+  <optgroup label="Facebook">
+    <option value="400,400">Profile Picture (400×400)</option>
+    <option value="820,360">Cover Photo (820×360)</option>
+    <option value="1200,630">Shared Image (1200×630)</option>
+  </optgroup>
+
+  <optgroup label="Twitter (X)">
+    <option value="400,400">Profile Picture (400×400)</option>
+    <option value="1500,500">Header (1500×500)</option>
+    <option value="1200,675">In-feed Image (1200×675)</option>
+  </optgroup>
+
+  <optgroup label="LinkedIn">
+    <option value="400,400">Profile Picture (400×400)</option>
+    <option value="1584,396">Banner (1584×396)</option>
+    <option value="1200,627">Shared Image (1200×627)</option>
+  </optgroup>
+
+  <optgroup label="YouTube">
+    <option value="800,800">Channel Icon (800×800)</option>
+    <option value="2560,1440">Banner (2560×1440)</option>
+    <option value="1280,720">Thumbnail (1280×720)</option>
+  </optgroup>
+</select>
+
         </div>
 
         <div class="custom-size">
