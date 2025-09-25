@@ -53,7 +53,7 @@
     .top-nav {
       position: absolute;
       top: 20px;
-      left: 20px;
+      right: 20px;
       display: flex;
       gap: 15px;
     }
@@ -176,13 +176,13 @@ select option {
 </head>
 <body>
   <!-- navigation -->
-<div class="top-nav">
-  <button id="btnImageCut" class="nav-btn" onclick="window.location.href='/'">
-  <i class="fas fa-scissors"></i> Image Compressor
-</button>
-<button id="btnConverter" class="nav-btn" onclick="window.location.href='/convert'">
-  <i class="fas fa-sync-alt"></i> Converter
-</button>
+ <div class="top-nav">
+  <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com'">
+    <i class="fas fa-scissors"></i> Image Cut
+  </button>
+  <button id="btnConverter" class="nav-btn" onclick="location.href='https://convert.image-cut.com'">
+    <i class="fas fa-sync-alt"></i> Converter
+  </button>
 </div>
 
 
@@ -220,6 +220,19 @@ select option {
   </div>
 
   <script>
+    // Set active navigation button based on current URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUrl = window.location.href;
+      
+      if (currentUrl.includes("convert.image-cut.com")) {
+        document.getElementById("btnConverter").classList.add("active");
+        document.getElementById("btnImageCut").classList.remove("active");
+      } else {
+        document.getElementById("btnImageCut").classList.add("active");
+        document.getElementById("btnConverter").classList.remove("active");
+      }
+    });
+
     const dropZone = document.getElementById('dropZone');
     const imageInput = document.getElementById('imageInput');
     const previewImage = document.getElementById('previewImage');
@@ -292,7 +305,3 @@ select option {
   </script>
 </body>
 </html>
-
-
-
-
