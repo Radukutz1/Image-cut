@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://image-cut.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Image Format Converter -->
+  <url>
+    <loc>https://convert.image-cut.com/</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- JPG to PDF Converter -->
+  <url>
+    <loc>https://image-cut.com/PDFconvert</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
