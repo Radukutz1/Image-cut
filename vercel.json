@@ -2,6 +2,10 @@
   "version": 2,
   "routes": [
     {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
       "src": "/PDFconvert",
       "has": [{ "type": "host", "value": "image-cut.com" }],
       "dest": "/pdfconv.html"
@@ -15,10 +19,6 @@
       "src": "/(.*)",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
       "dest": "/converter.html"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico"
     }
   ]
 }
