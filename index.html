@@ -249,6 +249,28 @@ select:hover {
       .nav-btn i { display: none; }
     }
 
+    .privacy-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10,14,39,0.85);
+  backdrop-filter: blur(6px);
+  color: #bbbbbb;
+  font-size: 0.75rem;   /* smaller text */
+  text-align: center;
+  padding: 6px 10px;    /* slimmer padding */
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 9999;
+}
+
+.privacy-footer i {
+  color: #a6c1ee;
+  margin-right: 5px;
+  font-size: 0.8rem;
+}
+
+
   </style>
 </head>
 <body>
@@ -471,5 +493,11 @@ select:hover {
       });
     }); // DOMContentLoaded
   </script>
+  <footer class="privacy-footer">
+  <p><i class="fas fa-shield-alt"></i> Privacy Notice: 
+    Your images are processed locally in your browser. 
+    We do not collect, upload, or store any files.
+  </p>
+</footer>
 </body>
 </html>
