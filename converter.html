@@ -14,14 +14,9 @@
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
       color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       margin: 0;
       padding: 20px;
       box-sizing: border-box;
-      position: relative;
     }
 
     @keyframes gradientBG {
@@ -30,64 +25,102 @@
       100% {background-position: 0% 50%;}
     }
 
-    .container {
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    h1 {
-      margin: 0 0 30px;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
     /* navigation bar */
     .top-nav {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 39, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px;
       display: flex;
+      justify-content: flex-end;
       gap: 15px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
-.nav-btn {
-  background: transparent;
-  border: 2px solid #a6c1ee;
-  color: #ffffff; /* white text */
-  padding: 10px 22px;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(166,193,238,0.5);
-}
+   /* navigation buttons - compact */
+  .nav-btn {
+    background: transparent;
+    border: 2px solid #a6c1ee;
+    color: #ffffff;
+    padding: 6px 14px; /* tighter padding */
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(166,193,238,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    width: auto;       /* <-- shrink to fit */
+    min-width: unset;  /* <-- prevent extra stretching */
+  }
 
-.nav-btn:hover {
-  background: #a6c1ee;
-  color: #ffffff; /* stay white on hover */
-  box-shadow: 0 0 20px rgba(166,193,238,0.9);
-  transform: translateY(-3px) scale(1.05);
-}
+  .nav-btn:hover {
+    background: #a6c1ee;
+    color: #0a0e27;
+    box-shadow: 0 0 20px rgba(166,193,238,0.9);
+    transform: translateY(-2px) scale(1.02);
+  }
 
+  /* Intro Section - more spacing */
+  .intro-section {
+    text-align: center;
+    margin: 140px auto 40px; /* bigger gap below header */
+    max-width: 600px;
+    color: #e0e0e0;
+  }
 
-    .nav-btn.active {
-      background: linear-gradient(90deg, #16213e, #0a0e27);
-      border: 2px solid #a6c1ee;
+  .intro-section h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ffffff;
+  }
+
+  /* extra breathing room before tool */
+  .container {
+    margin: 40px auto 40px; /* added top margin */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 2rem;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      border-radius: 3px;
     }
 
     /* drag & drop area */
     .drop-zone {
       margin: 20px 0;
-      padding: 40px;
+      padding: 30px;
       border: 2px dashed rgba(255, 255, 255, 0.4);
       border-radius: 15px;
       cursor: pointer;
@@ -102,7 +135,7 @@
 
     .drop-zone p {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 500;
       color: #ddd;
     }
@@ -122,46 +155,63 @@
       border: none;
       border-radius: 10px;
       color: #ffffff;
-      font-size: 1rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .file-input-button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .preview-container img {
       max-width: 100%;
-      max-height: 300px;
+      max-height: 250px;
       margin: 20px auto;
       display: block;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
+    .action-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
     select, button {
-      margin: 10px;
+      margin: 5px;
       padding: 12px 20px;
       border-radius: 10px;
       border: none;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 300px;
     }
 
     select {
       background: linear-gradient(90deg, #1a1a2e, #16213e);
       color: white;
+      appearance: none;
+      padding-right: 30px;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 15px;
     }
-select option {
-  background: #16213e;  /* dark background */
-  color: #ffffff;       /* white text */
-}
+
+    select option {
+      background: #16213e;
+      color: #ffffff;
+    }
 
     button {
       background: linear-gradient(90deg, #1a1a2e, #16213e);
@@ -169,23 +219,47 @@ select option {
     }
 
     button:hover, select:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .download-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .intro-section h2 { font-size: 1.4rem; }
+      .intro-section p { font-size: 0.9rem; }
+      .container { max-width: 90%; padding: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .intro-section h2 { font-size: 1.2rem; }
+      .intro-section p { font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
   <!-- navigation -->
- <div class="top-nav">
-  <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com'">
-    <i class="fas fa-scissors"></i> Image Compressor
-  </button>
-  <button id="btnConverter" class="nav-btn" onclick="location.href='https://convert.image-cut.com'">
-    <i class="fas fa-sync-alt"></i> Image Format Converter
-  </button>
-</div>
+  <div class="top-nav">
+    <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com'">
+      <i class="fas fa-scissors"></i> <span class="nav-text">Image Compressor</span>
+    </button>
+    <button id="btnConverter" class="nav-btn" onclick="location.href='https://convert.image-cut.com'">
+      <i class="fas fa-sync-alt"></i> <span class="nav-text">Image Format Converter</span>
+    </button>
+  </div>
 
+  <!-- intro -->
+  <div class="intro-section">
+    <h2>Convert Images Effortlessly</h2>
+    <p>Transform your images into JPG, PNG, WEBP, or AVIF in seconds — fast, simple and 100% free</p>
+  </div>
 
+  <!-- tool -->
   <div class="container">
     <h1><i class="fas fa-sync-alt"></i> Image Format Converter</h1>
 
@@ -212,7 +286,7 @@ select option {
       <button id="convertButton"><i class="fas fa-exchange-alt"></i> Convert</button>
     </div>
 
-    <div class="download-container" style="display:none; margin-top:20px;">
+    <div class="download-container" style="display:none;">
       <button id="downloadButton"><i class="fas fa-download"></i> Download</button>
     </div>
 
@@ -220,10 +294,8 @@ select option {
   </div>
 
   <script>
-    // Set active navigation button based on current URL
     document.addEventListener('DOMContentLoaded', function() {
       const currentUrl = window.location.href;
-      
       if (currentUrl.includes("convert.image-cut.com")) {
         document.getElementById("btnConverter").classList.add("active");
         document.getElementById("btnImageCut").classList.remove("active");
@@ -252,19 +324,17 @@ select option {
       reader.onload = (event) => {
         previewImage.src = event.target.result;
         previewImage.style.display = 'block';
-        actionContainer.style.display = 'block';
+        actionContainer.style.display = 'flex';
         downloadContainer.style.display = 'none';
       };
       reader.readAsDataURL(file);
     }
 
-    // Click upload
     imageInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (file) handleFile(file);
     });
 
-    // Drag & drop events
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
       dropZone.classList.add('dragover');
@@ -281,7 +351,6 @@ select option {
       if (file) handleFile(file);
     });
 
-    // Convert
     convertButton.addEventListener('click', () => {
       const ctx = canvas.getContext('2d');
       canvas.width = previewImage.naturalWidth;
@@ -291,10 +360,9 @@ select option {
       const format = formatSelect.value;
       convertedDataUrl = canvas.toDataURL(format);
 
-      downloadContainer.style.display = 'block';
+      downloadContainer.style.display = 'flex';
     });
 
-    // Download
     downloadButton.addEventListener('click', () => {
       const link = document.createElement('a');
       const ext = formatSelect.value.split('/')[1];
@@ -305,5 +373,3 @@ select option {
   </script>
 </body>
 </html>
-
-
