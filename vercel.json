@@ -1,7 +1,6 @@
 {
   "version": 2,
   "redirects": [
-    // 1. NON-WWW REDIRECT (This part is correct)
     {
       "source": "/:path*",
       "has": [
