@@ -6,13 +6,7 @@
   <title>Image Format Converter</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Favicon -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -268,23 +262,78 @@
   font-size: 0.8rem;
 }
 
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10,14,39,0.9);
+  backdrop-filter: blur(10px);
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between; /* Logo left, buttons right */
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.logo img {
+  height: 32px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.logo-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+
 
   </style>
 </head>
 <body>
-  <!-- navigation -->
+<!-- navigation -->
 <div class="top-nav">
-  <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com'">
-    <i class="fas fa-scissors"></i> <span class="nav-text">Image Compressor</span>
-  </button>
+  <!-- Logo (far left) -->
+  <a href="https://image-cut.com" class="logo">
+    <img src="imagecutlogo.jpg" alt="Image Cut Logo">
+    <span class="logo-text">Image Cut</span>
+  </a>
 
-  <button id="btnConverter" class="nav-btn" onclick="location.href='https://convert.image-cut.com'">
-    <i class="fas fa-sync-alt"></i> <span class="nav-text">Image Format Converter</span>
-  </button>
+  <!-- Buttons (far right) -->
+  <div class="nav-buttons">
+    <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com'">
+      <i class="fas fa-scissors"></i> <span class="nav-text">Image Compressor</span>
+    </button>
 
-  <button id="btnPdfConvert" class="nav-btn" onclick="location.href='https://image-cut.com/PDFconvert'">
-    <i class="fas fa-file-pdf"></i> <span class="nav-text">Convert JPG to PDF</span>
-  </button>
+    <button id="btnConverter" class="nav-btn" onclick="location.href='https://convert.image-cut.com'">
+      <i class="fas fa-sync-alt"></i> <span class="nav-text">Image Format Converter</span>
+    </button>
+
+    <button id="btnPdfConvert" class="nav-btn" onclick="location.href='https://image-cut.com/PDFconvert'">
+      <i class="fas fa-file-pdf"></i> <span class="nav-text">Convert JPG to PDF</span>
+    </button>
+  </div>
 </div>
 
 
@@ -415,4 +464,3 @@
 
 </body>
 </html>
-
