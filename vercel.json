@@ -11,12 +11,20 @@
     }
   ],
   "rewrites": [
+
     {
       "source": "/PDFConvert",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
       "destination": "/pdfconv.html"
     },
     
+
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "destination": "/index.html"
+    },
+
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
