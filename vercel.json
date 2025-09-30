@@ -1,6 +1,29 @@
 {
   "version": 2,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/converter",
+      "permanent": false,
+      "has": [
+        {
+          "type": "host",
+          "value": "convert.image-cut.com"
+        }
+      ]
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/converter",
+      "destination": "/converter.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "convert.image-cut.com"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "destination": "/converter.html",
