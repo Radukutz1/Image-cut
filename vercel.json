@@ -3,27 +3,7 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/converter.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "convert.image-cut.com"
-        }
-      ]
-    },
-    {
-      "source": "/PDFconvert",
-      "destination": "/pdfconv.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "image-cut.com"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/converter.html"
     }
   ]
 }
