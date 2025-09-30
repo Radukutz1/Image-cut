@@ -1,43 +1,20 @@
 {
   "version": 2,
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "^image-cut\\.com$"
-        }
-      ],
-      "destination": "https://www.image-cut.com/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
-      "destination": "/converter.html"
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
-      "destination": "/:path*"
+      "has": [{ "type": "host", "value": "image-cut.com" }],
+      "destination": "/index.html"
     },
     {
       "source": "/PDFconvert",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "has": [{ "type": "host", "value": "image-cut.com" }],
       "destination": "/pdfconv.html"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
-      "destination": "/index.html"
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
-      "destination": "/:path*"
+      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
+      "destination": "/converter.html"
     }
   ]
 }
