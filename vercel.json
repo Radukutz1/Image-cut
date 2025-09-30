@@ -1,6 +1,7 @@
 {
   "version": 2,
   "redirects": [
+ 
     {
       "source": "/:path*",
       "has": [
@@ -11,7 +12,6 @@
     }
   ],
   "rewrites": [
-
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
@@ -24,7 +24,8 @@
       "destination": "/pdfconv.html"
     },
     
-  
+    // 3. MAIN HOST CATCH-ALL
+    // This handles the root (/) and all other unhandled paths on www.image-cut.com by serving index.html
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
