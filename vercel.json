@@ -1,6 +1,7 @@
 {
   "version": 2,
   "redirects": [
+    // 1. NON-WWW REDIRECT (This part is correct)
     {
       "source": "/:path*",
       "has": [
@@ -11,25 +12,28 @@
     }
   ],
   "rewrites": [
+
     {
-      "source": "/(.*)",
+      "source": "/",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
       "destination": "/converter.html"
     },
     
+  
     {
       "source": "/PDFconvert",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
       "destination": "/pdfconv.html"
     },
     
-
+ 
     {
       "source": "/",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
       "destination": "/index.html"
     },
-
+    
+ 
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
