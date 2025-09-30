@@ -16,11 +16,12 @@
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
       "destination": "/pdfconv.html"
     },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
-      "destination": "/index.html"
-    },
+    // The previous rule for www.image-cut.com was:
+    // { "source": "/(.*)", "has": [ ... ], "destination": "/index.html" }
+    // This rule is DELETED. 
+    // Vercel will now automatically serve index.html for the root path (/)
+    // and /pdfconv.html for the /PDFConvert path.
+    
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
