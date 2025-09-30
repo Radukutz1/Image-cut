@@ -2,36 +2,37 @@
   "version": 2,
   "redirects": [
     {
-      // 1. Redirect the bare domain (image-cut.com) and ALL its paths
-      // to the working www.image-cut.com, preserving the path.
-      "source": "/:path((?!convert).*)",
-      "has": [{ "type": "host", "value": "image-cut.com" }],
-      "destination": "https://www.image-cut.com/:path",
+      // 1. PRIMARY FIX: Redirect all traffic from the bare domain (image-cut.com) 
+      //    to the WWW domain (www.image-cut.com), preserving the path.
+      // This is the Vercel-recommended way to handle bare domain issues.
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "image-cut.com" }
+      ],
+      "destination": "https://www.image-cut.com/:path*",
       "permanent": true
     }
   ],
   "rewrites": [
-    // 2. Preserve your existing internal asset/path logic for the WWW domain (primary)
+    // 2. REWRITE for the PDF path on the WWW domain (Canonical host)
     {
       "source": "/PDFConvert",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
       "destination": "/pdfconv.html"
     },
+    // 3. REWRITE for the main index on the WWW domain (Canonical host)
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
       "destination": "/index.html"
     },
-    
-    // 3. Keep the rewrite rule for your dedicated subdomain (convert.image-cut.com)
+    // 4. REWRITE for your dedicated subdomain (convert.image-cut.com)
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
       "destination": "/converter.html"
     },
-
-    // 4. Preserve direct file paths (favicon, sitemap) - these can also be moved to the "public" folder.
-    { "source": "/favicon.ico", "destination": "/favicon.ico" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" }
+    // Note: Vercel typically handles static assets like favicon, sitemap, and the logo 
+    // when they are in the root directory without explicit rewrite rules.
   ]
 }
