@@ -3,7 +3,12 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "image-cut.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "^image-cut\\.com$"
+        }
+      ],
       "destination": "https://www.image-cut.com/:path*",
       "permanent": true
     }
@@ -13,6 +18,11 @@
       "source": "/",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
       "destination": "/converter.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
+      "destination": "/:path*"
     },
     {
       "source": "/PDFconvert",
