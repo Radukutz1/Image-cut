@@ -10,25 +10,30 @@
       "permanent": true
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/PDFconvert",
-      "has": [{ "type": "host", "value": "image-cut.com" }],
-      "dest": "/pdfconv.html"
-    },
-    {
-      "src": "/",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
-      "dest": "/index.html"
-    },
-    {
-      "src": "/",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
-      "dest": "/converter.html"
+      "destination": "/converter.html"
     },
+    
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/PDFconvert",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "destination": "/pdfconv.html"
+    },
+    
+
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "destination": "/index.html"
+    },
+
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "destination": "/:path*"
     }
   ]
 }
