@@ -1,45 +1,27 @@
 {
   "version": 2,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
+      "destination": "/converter.html",
+      "permanent": false,
       "has": [
         {
           "type": "host",
           "value": "convert.image-cut.com"
         }
-      ],
-      "destination": "/converter.html"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "convert.image-cut.com"
-        }
-      ],
-      "destination": "/converter.html"
+      ]
     },
     {
       "source": "/PDFconvert",
+      "destination": "/pdfconv.html",
+      "permanent": false,
       "has": [
         {
           "type": "host",
           "value": "image-cut.com"
         }
-      ],
-      "destination": "/pdfconv.html"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "image-cut.com"
-        }
-      ],
-      "destination": "/index.html"
+      ]
     }
   ]
 }
