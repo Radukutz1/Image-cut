@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/PDFconvert",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "has": [{ "type": "host", "value": "image-cut.com" }],
       "dest": "/pdfconv.html"
     },
     {
