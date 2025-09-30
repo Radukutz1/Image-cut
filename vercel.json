@@ -2,6 +2,16 @@
   "version": 2,
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "convert.image-cut.com"
+        }
+      ],
+      "destination": "/converter.html"
+    },
+    {
       "source": "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
       "has": [
         {
