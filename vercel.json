@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "convert.image-cut.com"
+        }
+      ],
+      "destination": "/converter.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "convert.image-cut.com"
+        }
+      ],
+      "destination": "/converter.html"
+    },
+    {
+      "source": "/PDFconvert",
+      "has": [
+        {
+          "type": "host",
+          "value": "image-cut.com"
+        }
+      ],
+      "destination": "/pdfconv.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "image-cut.com"
+        }
+      ],
+      "destination": "/index.html"
+    }
+  ]
+}
