@@ -108,22 +108,28 @@
       background: linear-gradient(90deg,#16213e,#0a0e27);
       border-color: #a6c1ee;
     }
+    /* Make active button behave same as hover */
+.nav-btn.active:hover {
+  background: #a6c1ee;
+  color: #0a0e27;
+  transform: translateY(-2px) scale(1.02);
+}
 
     /* Intro: add vertical spacing so it sits lower than the fixed nav */
-    .intro-section {
-      text-align: center;
-      margin: 100px auto 28px; /* pushes the intro below the fixed nav */
-      max-width: 640px;
-      padding: 0 10px;
-      color: #e0e0e0;
-    }
+   .intro-section {
+  text-align: center;
+  margin: 120px auto 30px; /* space below header */
+  max-width: 600px;
+  color: #e0e0e0;
+  padding: 0 15px;
+}
 
-    .intro-section h2 {
-      font-size: 1.6rem;
-      margin: 0 0 8px;
-      color: #ffffff;
-      font-weight: 700;
-    }
+.intro-section h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
 
     .intro-section p {
       margin: 0;
@@ -138,10 +144,10 @@
       background-color: rgba(255,255,255,0.08);
       backdrop-filter: blur(10px);
       border-radius: 18px;
-      padding: 24px;
+      padding: 25px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.28);
       border: 1px solid rgba(255,255,255,0.12);
-      margin-bottom: 40px;
+      margin-bottom: 0 auto 40px;
     }
 select:hover {
   transform: translateY(-2px) scale(1.01);
@@ -292,6 +298,22 @@ select:hover {
   color: #a6c1ee;
   margin-right: 5px;
   font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .intro-section h2 { font-size: 1.4rem; }
+  h1 { font-size: 1.6rem; }
+  .container { max-width: 90%; padding: 20px; }
+  .nav-btn { font-size: 0.75rem; padding: 5px 10px; }
+}
+
+@media (max-width: 480px) {
+  body { padding: 10px; }
+  .intro-section h2 { font-size: 1.2rem; }
+  h1 { font-size: 1.4rem; }
+  .container { max-width: 95%; padding: 15px; border-radius: 12px; }
+  .nav-btn { font-size: 0.7rem; padding: 5px 8px; }
+  .nav-btn i { display: none; } /* Hide icons on very small screens */
 }
 
 
