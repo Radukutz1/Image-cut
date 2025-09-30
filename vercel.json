@@ -24,8 +24,7 @@
       "destination": "/pdfconv.html"
     },
     
-    // 3. MAIN HOST CATCH-ALL
-    // This handles the root (/) and all other unhandled paths on www.image-cut.com by serving index.html
+    
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.image-cut.com" }],
