@@ -1,7 +1,6 @@
 {
   "version": 2,
   "redirects": [
- 
     {
       "source": "/:path*",
       "has": [
@@ -11,24 +10,25 @@
       "permanent": true
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
+      "src": "/PDFconvert",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "dest": "/pdfconv.html"
+    },
+    {
+      "src": "/",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "dest": "/index.html"
+    },
+    {
+      "src": "/",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
-      "destination": "/converter.html"
+      "dest": "/converter.html"
     },
-    
     {
-      "source": "/PDFconvert",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
-      "destination": "/pdfconv.html"
-    },
-    
-    
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.image-cut.com" }],
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
