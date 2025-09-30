@@ -1,28 +1,37 @@
 {
   "version": 2,
-  "routes": [
+  "redirects": [
     {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico"
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/PDFconvert",
+      // 1. Redirect the bare domain (image-cut.com) and ALL its paths
+      // to the working www.image-cut.com, preserving the path.
+      "source": "/:path((?!convert).*)",
       "has": [{ "type": "host", "value": "image-cut.com" }],
-      "dest": "/pdfconv.html"
-    },
-    {
-      "src": "/(.*)",
-      "has": [{ "type": "host", "value": "image-cut.com" }],
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
-      "dest": "/converter.html"
+      "destination": "https://www.image-cut.com/:path",
+      "permanent": true
     }
+  ],
+  "rewrites": [
+    // 2. Preserve your existing internal asset/path logic for the WWW domain (primary)
+    {
+      "source": "/PDFConvert",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "destination": "/pdfconv.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.image-cut.com" }],
+      "destination": "/index.html"
+    },
+    
+    // 3. Keep the rewrite rule for your dedicated subdomain (convert.image-cut.com)
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "convert.image-cut.com" }],
+      "destination": "/converter.html"
+    },
+
+    // 4. Preserve direct file paths (favicon, sitemap) - these can also be moved to the "public" folder.
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" }
   ]
 }
