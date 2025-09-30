@@ -2,7 +2,7 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/:path*",
+      "source": "/*",
       "has": [{ "type": "host", "value": "convert.image-cut.com" }],
       "destination": "/converter.html"
     },
