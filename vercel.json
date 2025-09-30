@@ -20,6 +20,10 @@
           "value": "image-cut.com"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
