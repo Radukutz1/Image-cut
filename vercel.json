@@ -14,7 +14,7 @@
     },
     {
       "source": "/PDFconvert",
-      "destination": "/pdfconvert",
+      "destination": "/pdfconv",
       "permanent": true
     },
     {
