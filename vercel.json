@@ -3,30 +3,8 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/converter",
+      "destination": "/",
       "permanent": false,
-      "has": [
-        {
-          "type": "host",
-          "value": "convert.image-cut.com"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/converter",
-      "destination": "/converter.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "convert.image-cut.com"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/converter.html",
       "has": [
         {
           "type": "host",
@@ -36,13 +14,31 @@
     },
     {
       "source": "/PDFconvert",
-      "destination": "/pdfconv.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "image-cut.com"
-        }
-      ]
+      "destination": "/pdfconvert",
+      "permanent": true
+    },
+    {
+      "source": "/PDFconvert/",
+      "destination": "/pdfconvert",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/compress",
+      "destination": "/compress.html"
+    },
+    {
+      "source": "/convert",
+      "destination": "/convert.html"
+    },
+    {
+      "source": "/pdfconvert",
+      "destination": "/pdfconvert.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
     },
     {
       "source": "/(.*)",
@@ -52,6 +48,14 @@
           "type": "host",
           "value": "image-cut.com"
         }
+      ]
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" }
       ]
     }
   ]
