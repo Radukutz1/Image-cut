@@ -21,7 +21,7 @@
 
   <!-- Image Format Converter -->
   <url>
-    <loc>https://www.image-cut.com/convert.html</loc>
+    <loc>https://www.image-cut.com/converter.html</loc>
     <lastmod>2025-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -29,7 +29,7 @@
 
   <!-- JPG to PDF Converter -->
   <url>
-    <loc>https://www.image-cut.com/pdfconvert.html</loc>
+    <loc>https://www.image-cut.com/pdfconv.html</loc>
     <lastmod>2025-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -44,3 +44,4 @@
   </url>
 
 </urlset>
+
