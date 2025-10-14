@@ -13,7 +13,7 @@
 
   <!-- Image Compressor -->
   <url>
-    <loc>https://www.image-cut.com/compress.html</loc>
+    <loc>https://www.image-cut.com/compress</loc>
     <lastmod>2025-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -21,7 +21,7 @@
 
   <!-- Image Format Converter -->
   <url>
-    <loc>https://www.image-cut.com/converter.html</loc>
+    <loc>https://www.image-cut.com/convert</loc>
     <lastmod>2025-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -29,7 +29,7 @@
 
   <!-- JPG to PDF Converter -->
   <url>
-    <loc>https://www.image-cut.com/pdfconv.html</loc>
+    <loc>https://www.image-cut.com/pdfconvert</loc>
     <lastmod>2025-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -37,11 +37,10 @@
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://www.image-cut.com/privacy.html</loc>
+    <loc>https://www.image-cut.com/privacy</loc>
     <lastmod>2025-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
 </urlset>
-
