@@ -48,6 +48,33 @@
       z-index: 1000;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+/* MOBILE NAVIGATION FIX */
+@media (max-width: 768px) {
+  .nav-buttons {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .nav-btn {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .top-nav {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  /* Optional: hide scrollbar for a cleaner look */
+  .nav-buttons::-webkit-scrollbar {
+    display: none;
+  }
+}
 
     .nav-btn {
       background: transparent;
@@ -493,6 +520,7 @@ button#downloadButton:hover {
   </footer>
 </body>
 </html>
+
 
 
 
