@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K36CY569X6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K36CY569X6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K36CY569X6');
+  </script>
 
-  gtag('config', 'G-K36CY569X6');
-</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0a0e27" />
-  
-  <!-- Canonical -->
+
+  <!-- Mobile Experience -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Canonical and Alternate -->
   <link rel="canonical" href="https://image-cut.com/" />
+  <link rel="alternate" href="https://image-cut.com/" hreflang="en" />
 
   <!-- SEO Meta -->
-  <title>Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs</title>
-  <meta name="description" content="Welcome to Image Cut — your free online toolkit for image compression, format conversion, and PDF creation. Fast, private, and easy to use for JPG, PNG, WebP, and more.">
+  <title>Image Cut — Free Online Image Compressor, Converter & PDF Creator</title>
+  <meta name="description" content="Compress, convert, and create image-based PDFs for free with Image Cut. 100% secure, browser-based, and lightning fast — no uploads or watermarks.">
   <meta name="keywords" content="image compressor, image converter, JPG to PDF, image resize, online tools, free, image optimization, Image Cut">
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs">
+  <meta property="og:title" content="Image Cut — Free Online Image Compressor, Converter & PDF Creator">
   <meta property="og:description" content="Compress, resize, and convert images online with Image Cut. Free, private, and lightning-fast — optimize JPG, PNG, and WebP files instantly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://image-cut.com/">
@@ -32,7 +38,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs">
+  <meta name="twitter:title" content="Image Cut — Free Online Image Compressor, Converter & PDF Creator">
   <meta name="twitter:description" content="Free, fast, and secure online tools for compressing, converting, and exporting images to PDF.">
   <meta name="twitter:image" content="https://image-cut.com/og-image.jpg">
 
@@ -43,17 +49,37 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Preconnect -->
+  <!-- Fonts & Icons (Optimized Preload) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617954284506964"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617954284506964" crossorigin="anonymous"></script>
+
+  <!-- Structured Data (Organization + SearchAction) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://image-cut.com/",
+    "name": "Image Cut",
+    "description": "Free online image tools — compress, convert, and create PDFs directly in your browser.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://image-cut.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Image Cut",
+      "url": "https://image-cut.com/",
+      "logo": "https://image-cut.com/imagecutlogo.png"
+    }
+  }
+  </script>
 
   <style>
     body {
@@ -289,7 +315,47 @@
     </p>
     <p>Your files are processed locally. Nothing is uploaded or stored — 100% secure and private.</p>
   </footer>
+
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Image Cut free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Image Cut is 100% free and runs directly in your browser. No uploads, no sign-ups, and no hidden fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Image Cut secure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. All image processing happens locally on your device. Nothing is ever uploaded or stored on our servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which image formats are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Image Cut supports JPG, PNG, and WebP conversions, compression, and PDF creation."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Optional: Service Worker for Performance -->
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+  </script>
+
 </body>
 </html>
-
-
