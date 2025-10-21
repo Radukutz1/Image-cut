@@ -369,6 +369,10 @@
     <button id="btnPdfConvert" class="nav-btn" onclick="location.href='https://image-cut.com/PDFconvert'">
       <i class="fas fa-file-pdf"></i> <span class="nav-text">Convert JPG to PDF</span>
     </button>
+   
+    <button id="btnSizeCompress" class="nav-btn" onclick="location.href='https://image-cut.com/sizecompress'">
+    <i class="fas fa-compress-arrows-alt"></i> <span class="nav-text">Image Size Compressor</span>
+  </button>
   </div>
 </div>
 
@@ -414,16 +418,23 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const currentUrl = window.location.href;
-      if (currentUrl.includes("convert.image-cut.com")) {
-        document.getElementById("btnConverter").classList.add("active");
-        document.getElementById("btnImageCut").classList.remove("active");
-      } else {
-        document.getElementById("btnImageCut").classList.add("active");
-        document.getElementById("btnConverter").classList.remove("active");
-      }
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+  const url = window.location.href;
+  const navButtons = {
+    compress: document.getElementById("btnImageCut"),
+    convert: document.getElementById("btnConverter"),
+    pdf: document.getElementById("btnPdfConvert"),
+    size: document.getElementById("btnSizeCompress")
+  };
+
+  Object.values(navButtons).forEach(btn => btn.classList.remove("active"));
+
+  if (url.includes("/convert")) navButtons.convert.classList.add("active");
+  else if (url.includes("/pdfconvert")) navButtons.pdf.classList.add("active");
+  else if (url.includes("/sizecompress")) navButtons.size.classList.add("active");
+  else navButtons.compress.classList.add("active");
+});
+
 
     const dropZone = document.getElementById('dropZone');
     const imageInput = document.getElementById('imageInput');
@@ -536,6 +547,7 @@
 
 </body>
 </html>
+
 
 
 
