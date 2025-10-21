@@ -13,7 +13,12 @@
   <meta name="description" content="Welcome to Image Cut — your free online toolkit for image compression, format conversion, and PDF creation. Fast, private, and easy to use for JPG, PNG, WebP, and more.">
   <meta name="keywords" content="image compressor, image converter, JPG to PDF, image resize, online tools, free, image optimization, Image Cut">
   <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+
+  
   <!-- Open Graph -->
   <meta property="og:title" content="Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs">
   <meta property="og:description" content="Compress, resize, and convert images online with Image Cut. Free, private, and lightning-fast — optimize JPG, PNG, and WebP files instantly.">
@@ -164,7 +169,23 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
     }
+.tool-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
 
+.tool-card {
+  flex: 1 1 280px;
+  max-width: 320px;
+  text-align: center;
+}
+
+/* Ensures the last odd card (like your Size Compressor) stays centered */
+.tool-card:last-child:nth-child(odd) {
+  margin: 0 auto;
+}
     .tool-card:hover {
       transform: translateY(-5px) scale(1.02);
       box-shadow: 0 8px 20px rgba(166,193,238,0.5);
@@ -227,6 +248,7 @@
 </head>
 
 <body>
+  
   <div class="top-nav">
     <a href="/" class="logo">
       <img src="imagecutlogo.png" alt="Image Cut Logo">
@@ -236,6 +258,7 @@
       <button class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Compress</button>
       <button class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert</button>
       <button class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF Convert</button>
+        <button class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress-arrows-alt"></i> Size Compress</button>
     </div>
   </div>
 
@@ -249,6 +272,25 @@
       without uploads, tracking, or watermarks.
     </p>
   </section>
+<section class="intro-content">
+  <p>
+    Image Cut lets you compress, convert, and export images instantly — 
+    all processed locally in your browser for 100% privacy. 
+    No uploads. No waiting. Just fast, secure image tools for everyone.
+  </p>
+</section>
+
+<style>
+.intro-content {
+  max-width: 820px;
+  margin: -30px auto 40px;
+  text-align: center;
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+</style>
 
   <section class="tool-grid">
     <div class="tool-card">
@@ -271,6 +313,14 @@
       <p>Turn images into downloadable, shareable PDFs instantly. Combine multiple images with one click.</p>
       <button class="tool-btn" onclick="location.href='/pdfconvert'">Use PDF Tool</button>
     </div>
+
+    <div class="tool-card">
+  <i class="fas fa-compress-arrows-alt"></i>
+  <h3>Image Size Compressor</h3>
+  <p>Adjust and optimize your image dimensions while maintaining quality. Resize large files for web, email, or thumbnails in seconds.</p>
+  <button class="tool-btn" onclick="location.href='/sizecompress'">Use Size Compressor</button>
+</div>
+
   </section>
 <section class="content-info">
   <h2>Why Choose Image Cut?</h2>
@@ -379,6 +429,83 @@
   color: #ccc;
   font-size: 0.95rem;
   line-height: 1.5;
+}
+</style>
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Are the tools free to use?</h3>
+    <p>Yes! All tools are completely free and run in your browser. We don’t store or upload your images.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Will my image quality be reduced?</h3>
+    <p>No. Compression reduces file size but keeps the original resolution and visible quality intact.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is Image Cut secure?</h3>
+    <p>Absolutely. All image processing is done locally in your browser — nothing is ever sent to our servers.</p>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are the tools free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All tools are completely free and run in your browser. We don’t store or upload your images."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my image quality be reduced?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Compression reduces file size but keeps the original resolution and visible quality intact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Image Cut secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. All image processing is done locally in your browser — nothing is ever sent to our servers."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+.faq {
+  max-width:800px;
+  margin:60px auto;
+  text-align:left;
+  padding:0 24px;
+}
+.faq h2 {
+  text-align:center;
+  color:#a6c1ee;
+  margin-bottom:30px;
+}
+.faq-item {
+  background:rgba(255,255,255,0.04);
+  margin-bottom:16px;
+  padding:20px;
+  border-radius:10px;
+}
+.faq-item h3 {
+  color:#fff;
+  margin-bottom:6px;
+}
+.faq-item p {
+  color:#ccc;
+  font-size:0.95rem;
+  line-height:1.5;
 }
 </style>
 
