@@ -1,11 +1,7 @@
 {
   "version": 2,
   "redirects": [
-    {
-      "source": "https://image-cut.com/(.*)",
-      "destination": "https://www.image-cut.com/$1",
-      "permanent": true
-    },
+
     {
       "source": "/PDFconvert",
       "destination": "/pdfconvert",
