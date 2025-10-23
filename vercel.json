@@ -2,7 +2,7 @@
   "version": 2,
   "redirects": [
     {
-      "source": "https://image-cut.com/(.*)",
+      "source": "/(.*)",
       "destination": "https://www.image-cut.com/$1",
       "permanent": true
     },
