@@ -1,37 +1,77 @@
-"redirects": [
-  {
-    "source": "/(.*)",
-    "destination": "https://www.image-cut.com/$1",
-    "permanent": true
-  },
-  {
-    "source": "/PDFconvert",
-    "destination": "/pdfconvert",
-    "permanent": true
-  },
-  {
-    "source": "/converter.html",
-    "destination": "/convert",
-    "permanent": true
-  },
-  {
-    "source": "/compress.html",
-    "destination": "/compress",
-    "permanent": true
-  },
-  {
-    "source": "/pdfconv.html",
-    "destination": "/pdfconvert",
-    "permanent": true
-  },
-  {
-    "source": "/sizecompress.html",
-    "destination": "/sizecompress",
-    "permanent": true
-  },
-  {
-    "source": "/privacy.html",
-    "destination": "/privacy",
-    "permanent": true
-  }
-]
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.image-cut.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/PDFconvert",
+      "destination": "/pdfconvert",
+      "permanent": true
+    },
+    {
+      "source": "/converter.html",
+      "destination": "/convert",
+      "permanent": true
+    },
+    {
+      "source": "/compress.html",
+      "destination": "/compress",
+      "permanent": true
+    },
+    {
+      "source": "/pdfconv.html",
+      "destination": "/pdfconvert",
+      "permanent": true
+    },
+    {
+      "source": "/sizecompress.html",
+      "destination": "/sizecompress",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/compress",
+      "destination": "/compress.html"
+    },
+    {
+      "source": "/convert",
+      "destination": "/converter.html"
+    },
+    {
+      "source": "/pdfconvert",
+      "destination": "/pdfconv.html"
+    },
+    {
+      "source": "/sizecompress",
+      "destination": "/sizecompress.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}
