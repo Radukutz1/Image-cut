@@ -1,32 +1,17 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/compress",
-      "destination": "/compress.html"
-    },
-    {
-      "source": "/convert",
-      "destination": "/converter.html"
-    },
-    {
-      "source": "/pdfconvert",
-      "destination": "/pdfconv.html"
-    },
-    {
-      "source": "/sizecompress",
-      "destination": "/sizecompress.html"
-    },
-    {
-      "source": "/privacy",
-      "destination": "/privacy.html"
-    },
-    {
-      "source": "/",
-      "destination": "/index.html"
-    }
-  ],
+
   "redirects": [
+    {
+      "source": "http://image-cut.com/(.*)",
+      "destination": "https://www.image-cut.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "https://image-cut.com/(.*)",
+      "destination": "https://www.image-cut.com/$1",
+      "permanent": true
+    },
     {
       "source": "/PDFconvert",
       "destination": "/pdfconvert",
@@ -58,6 +43,34 @@
       "permanent": true
     }
   ],
+
+  "rewrites": [
+    {
+      "source": "/compress",
+      "destination": "/compress.html"
+    },
+    {
+      "source": "/convert",
+      "destination": "/converter.html"
+    },
+    {
+      "source": "/pdfconvert",
+      "destination": "/pdfconv.html"
+    },
+    {
+      "source": "/sizecompress",
+      "destination": "/sizecompress.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    }
+  ],
+
   "headers": [
     {
       "source": "/(.*)",
