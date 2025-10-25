@@ -309,26 +309,13 @@ button:hover {
     <img src="imagecutlogo.png" alt="Image Cut Logo">
     <span class="logo-text">Image Cut</span>
   </a>
-<button class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
-  
-  <div class="nav-buttons">
-    <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com/compress'">
-      <i class="fas fa-scissors"></i> Image Compressor
-    </button>
-
-    <button id="btnConverter" class="nav-btn" onclick="location.href='https://image-cut.com/convert'">
-      <i class="fas fa-sync-alt"></i> Image Format Converter
-    </button>
-
-    <button id="btnPdfConvert" class="nav-btn" onclick="location.href='https://image-cut.com/PDFconvert'">
-      <i class="fas fa-file-pdf"></i> Convert JPG to PDF
-    </button>
-
-    <button id="btnSizeCompress" class="nav-btn" onclick="location.href='https://image-cut.com/sizecompress'">
-      <i class="fas fa-compress-arrows-alt"></i> Image Size Compressor
-    </button>
+    <div class="nav-buttons" role="navigation" aria-label="main tools">
+      <button type="button" class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Image Compressor</button>
+      <button type="button" class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert Format</button>
+      <button type="button" class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF to JPG</button>
+      <button type="button" class="nav-btn active" onclick="location.href='/sizecompress'"><i class="fas fa-compress"></i> Size Compress</button>
+    </div>
   </div>
-</div>
 
 <!-- Intro section-->
 <div class="intro-section">
@@ -452,6 +439,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+
 
 
 
