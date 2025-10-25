@@ -54,7 +54,7 @@
 
   <style>
     /* Base */
-    :root { --bg1:#0a0e27; --bg2:#16213e; --glass: rgba(255,255,255,0.06); --accent:#a6c1ee; }
+    :root { --bg1:#0a0e27; --bg2:#16213e; --glass: rgba(255,255,255,0.06); --accent:#a6c1ee; --btn-glow: rgba(255, 179, 71, 0.24); }
     * { box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
@@ -141,14 +141,49 @@
     }
     .drop-zone.dragover { background: rgba(166,193,238,0.06); border-color:var(--accent); transform: translateY(-2px); }
 
-    .file-input-button { margin-top:6px; padding:10px 16px; border-radius:10px; background:linear-gradient(90deg,#1a1a2e,#16213e); color:#fff; border:none; cursor:pointer; }
+    /* file input button styling + hover pop/ glow */
+    .file-input-button {
+      margin-top:6px;
+      padding:10px 16px;
+      border-radius:10px;
+      background: linear-gradient(90deg,#1a1a2e,#16213e);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display:inline-block;
+    }
+    .file-input-button:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(166,193,238,0.12), 0 0 28px rgba(255,179,71,0.14);
+    }
 
+    /* constrained preview thumbnail (small but clear) */
     .preview-container { margin-top:14px; display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap; }
     #previewImage { display:none; max-width:240px; max-height:180px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
     .meta { color:#cfd8ff; font-size:0.9rem; text-align:left; max-width:240px; }
 
+    /* controls */
     .controls { margin-top:14px; display:flex; flex-direction:column; gap:10px; align-items:center; }
-    select, input[type="number"] { padding:10px 12px; border-radius:8px; border:none; background: linear-gradient(90deg,#1a1a2e,#16213e); color:#fff; font-weight:600; width:260px; box-shadow:0 6px 14px rgba(0,0,0,0.35); }
+    select, input[type="number"] {
+      padding:10px 12px;
+      border-radius:8px;
+      border:none;
+      background: linear-gradient(90deg,#1a1a2e,#16213e);
+      color:#fff;
+      font-weight:600;
+      width:260px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.35);
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+    }
+    select option { background: #16213e; color: #ffffff; }
+
     .small-inputs { display:flex; gap:8px; align-items:center; }
     .small-inputs input { width:120px; }
 
@@ -159,14 +194,7 @@
     canvas { display:none; }
 
     /* About section styling - restored */
-    .content-info {
-      max-width:800px;
-      margin:40px auto 80px;
-      text-align:center;
-      color:#d9d9d9;
-      line-height:1.6;
-      font-size:0.95rem;
-    }
+    .content-info { max-width:800px; margin:40px auto 80px; text-align:center; color:#d9d9d9; line-height:1.6; font-size:0.95rem; }
     .content-info h2 { color:#fff; font-size:1.6rem; margin-bottom:12px; }
     .content-info h3 { color:#fff; font-size:1.2rem; margin:28px 0 10px; }
     .content-info ul { list-style:none; padding:0; margin:0 auto; max-width:640px; text-align:left; }
@@ -201,7 +229,7 @@
       <button type="button" class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Image Compressor</button>
       <button type="button" class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert Format</button>
       <button type="button" class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF to JPG</button>
-      <button type="button" class="nav-btn active" onclick="location.href='/sizecompress'"><i class="fas fa-compress"></i> Size Compress</button>
+      <button type="button" class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress"></i> Size Compress</button>
     </div>
   </div>
 
@@ -212,6 +240,7 @@
 
       <div class="drop-zone" id="dropZone" aria-label="Drag and drop image here">
         <p>Drag & Drop your image here or click to choose</p>
+        <!-- label has same class used in JS to stop propagation -->
         <label for="imageInput" class="file-input-button">Choose Image</label>
         <input type="file" id="imageInput" accept="image/*">
         <div style="font-size:0.85rem;color:#cfd8ff;margin-top:6px;">Preview is shown as a small thumbnail — full-size image used for processing.</div>
@@ -293,7 +322,6 @@
     <p><i class="fas fa-shield-alt"></i> Privacy Notice: Your images are processed locally in your browser. We do not collect, upload, or store any files.</p>
   </footer>
 
-  <!-- Script logic (uploader, presets, compress -> download) -->
   <script>
   (function() {
     // Elements
@@ -309,6 +337,16 @@
     const compressButton = document.getElementById('compressButton');
     const downloadLink = document.getElementById('downloadLink');
     const canvas = document.getElementById('canvas');
+
+    // file-input-button label: stop propagation to avoid dropZone click double-invocation
+    const labelButton = document.querySelector('.file-input-button');
+    if (labelButton) {
+      labelButton.addEventListener('click', function(e) {
+        // Prevent click bubbling into the drop zone which also calls imageInput.click()
+        e.stopPropagation();
+        // Let the label behavior open the file picker naturally
+      });
+    }
 
     // state
     let currentFile = null;
@@ -334,8 +372,14 @@
       }
     }
 
-    // Click on drop zone opens file picker
-    dropZone.addEventListener('click', () => imageInput.click());
+    // Click on drop zone opens file picker (but label click won't bubble here)
+    dropZone.addEventListener('click', (e) => {
+      // If a control inside dropZone was clicked (like the label), it already handled it.
+      // Only trigger when clicking the container itself.
+      if (e.target === dropZone) {
+        imageInput.click();
+      }
+    });
 
     // Drag UI
     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
@@ -350,6 +394,7 @@
     imageInput.addEventListener('change', (e) => {
       const f = e.target.files && e.target.files[0];
       if (f) handleFile(f);
+      // keep this so the same file can be re-selected later
       e.target.value = '';
     });
 
