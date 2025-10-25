@@ -328,220 +328,127 @@ button:hover {
   </div>
 </div>
 
-<!-- tool -->
-<div class="container">
-  <h1><i class="fas fa-scissors"></i> Image Compressor</h1>
-  <div class="drop-zone" id="dropZone">
-    <p>Drag & Drop your image here or click below</p>
-    <label for="imageInput" class="file-input-button">Choose Image</label>
-    <input type="file" id="imageInput" accept="image/*">
+  <div class="container">
+    <div class="drop-zone" id="dropZone">
+      <p>Drag & Drop your image here or <strong>click to upload</strong></p>
+      <input type="file" id="imageInput" accept="image/*">
+    </div>
+
+    <img id="previewImage" alt="Preview">
+    <button id="compressButton">Compress Image</button>
+    <a id="downloadLink" href="#" download>
+      <button>Download Compressed Image</button>
+    </a>
+
+    <canvas id="canvas"></canvas>
   </div>
 
-  <div class="preview-container">
-    <img id="previewImage" style="display:none;" alt="Preview">
-  </div>
-
-  <button id="compressButton" style="display:none;">Compress Image</button>
-  <a id="downloadLink" style="display:none;"><button>Download</button></a>
-  <canvas id="canvas" style="display:none;"></canvas>
-</div>
-
-<script>
-  // Safe nav highlight (non-breaking)
-  document.addEventListener('DOMContentLoaded', function() {
-    const path = window.location.pathname.replace(/\/$/, '');
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-      const onclick = btn.getAttribute('onclick') || '';
-      // Basic match: check if the onclick URL contains the current path
-      if (onclick.includes(path)) btn.classList.add('active');
-    });
-  });
-
-  // Converter logic
-  (function() {
-    const dropZone = document.getElementById('dropZone');
-    const imageInput = document.getElementById('imageInput');
-    const previewImage = document.getElementById('previewImage');
-    const canvas = document.getElementById('canvas');
-    const formatSelect = document.getElementById('formatSelect');
-    const convertButton = document.getElementById('convertButton');
-    const downloadButton = document.getElementById('downloadButton');
-    const actionContainer = document.querySelector('.action-container');
-    const downloadContainer = document.querySelector('.download-container');
-
-    let convertedDataUrl = null;
-    let currentFileName = 'converted';
-
-    // Open file picker when clicking the drop zone
-    dropZone.addEventListener('click', () => {
-      imageInput.click();
+  <script>
+    // Highlight active nav safely
+    document.addEventListener('DOMContentLoaded', function() {
+      const path = window.location.pathname.replace(/\/$/, '');
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const onclick = btn.getAttribute('onclick') || '';
+        if (onclick.includes(path)) btn.classList.add('active');
+      });
     });
 
-    // Helper to handle files
-    function handleFile(file) {
-      if (!file || !file.type.startsWith('image/')) {
-        alert('Please select an image file.');
-        return;
+    (function () {
+      const dropZone = document.getElementById('dropZone');
+      const imageInput = document.getElementById('imageInput');
+      const previewImage = document.getElementById('previewImage');
+      const compressButton = document.getElementById('compressButton');
+      const downloadLink = document.getElementById('downloadLink');
+      const canvas = document.getElementById('canvas');
+
+      let currentFileName = 'compressed';
+      let lastObjectUrl = null;
+
+      function cleanupObjectUrl() {
+        if (lastObjectUrl) {
+          URL.revokeObjectURL(lastObjectUrl);
+          lastObjectUrl = null;
+        }
       }
 
-      currentFileName = (file.name && file.name.split('.').slice(0, -1).join('.')) || 'converted';
+      dropZone.addEventListener('click', () => imageInput.click());
 
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        // Reset state
-        convertedDataUrl = null;
-        downloadContainer.style.display = 'none';
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      });
+      dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file) handleFile(file);
+      });
 
-        // Wait until image finishes loading before enabling actions
-        previewImage.onload = () => {
-          // Show preview and enable controls
-          previewImage.style.display = 'block';
-          actionContainer.style.display = 'flex';
-          // Reset scroll or other states if needed
+      imageInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFile(file);
+        e.target.value = '';
+      });
+
+      function handleFile(file) {
+        cleanupObjectUrl();
+        if (!file.type.startsWith('image/')) {
+          alert('Please upload an image file.');
+          return;
+        }
+
+        currentFileName = file.name.split('.').slice(0, -1).join('.') || 'compressed';
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImage.onload = () => {
+            previewImage.style.display = 'block';
+            compressButton.style.display = 'inline-block';
+            downloadLink.style.display = 'none';
+          };
+          previewImage.src = e.target.result;
         };
-
-        // Assign src after setting onload
-        previewImage.src = event.target.result;
-      };
-      reader.onerror = () => {
-        alert('Failed to read the file. Please try another image.');
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // File input change
-    imageInput.addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (file) handleFile(file);
-      // Clear input so same file can be selected again if needed
-      e.target.value = '';
-    });
-
-    // Drag & Drop
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropZone.classList.add('dragover');
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('dragover');
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.classList.remove('dragover');
-      const file = e.dataTransfer.files && e.dataTransfer.files[0];
-      if (file) handleFile(file);
-    });
-
-    // Convert button
-    convertButton.addEventListener('click', () => {
-      if (!previewImage.src) {
-        alert('Please upload an image first.');
-        return;
+        reader.readAsDataURL(file);
       }
 
-      // Ensure image actually loaded
-      if (!previewImage.complete || previewImage.naturalWidth === 0) {
-        alert('The preview image is still loading. Please wait a moment and try again.');
-        return;
-      }
+      compressButton.addEventListener('click', async () => {
+        if (!previewImage.src) return alert('Upload an image first.');
 
-      const ctx = canvas.getContext('2d');
-
-      // Set canvas size to image natural size, but limit to avoid huge canvases
-      const maxDim = 4096; // safe upper limit for many browsers
-      let w = previewImage.naturalWidth;
-      let h = previewImage.naturalHeight;
-
-      if (w > maxDim || h > maxDim) {
-        const ratio = Math.min(maxDim / w, maxDim / h);
-        w = Math.round(w * ratio);
-        h = Math.round(h * ratio);
-      }
-
-      canvas.width = w;
-      canvas.height = h;
-
-      // Draw image into canvas scaled to canvas size
-      try {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(previewImage, 0, 0, canvas.width, canvas.height);
-      } catch (err) {
-        console.error(err);
-        alert('Unable to draw the image on canvas. This can happen for cross-origin images. Use a local image file instead.');
-        return;
-      }
-
-      const format = formatSelect.value || 'image/jpeg';
-
-      try {
-        // Use quality parameter for JPEG to preserve reasonable size/quality tradeoff
-        if (format === 'image/jpeg' || format === 'image/jpg') {
-          convertedDataUrl = canvas.toDataURL(format, 0.92);
-        } else {
-          convertedDataUrl = canvas.toDataURL(format);
+        const MAX_SIDE = 4096;
+        let w = previewImage.naturalWidth;
+        let h = previewImage.naturalHeight;
+        if (w > MAX_SIDE || h > MAX_SIDE) {
+          const ratio = Math.min(MAX_SIDE / w, MAX_SIDE / h);
+          w *= ratio; h *= ratio;
         }
-      } catch (err) {
-        console.error(err);
-        alert('Conversion failed: ' + err.message);
-        convertedDataUrl = null;
-        return;
-      }
 
-      if (convertedDataUrl) {
-        downloadContainer.style.display = 'flex';
-        // Optionally set download button text
-        downloadButton.textContent = 'Download';
-        // show small visual hint that conversion succeeded
-      } else {
-        alert('Conversion failed. Try a different format or a smaller image.');
-      }
-    });
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(previewImage, 0, 0, w, h);
 
-    // Download button
-    downloadButton.addEventListener('click', () => {
-      if (!convertedDataUrl) {
-        alert('No converted file available. Click Convert first.');
-        return;
-      }
+        const preferredFormats = ['image/webp', 'image/jpeg'];
+        const quality = 0.8;
 
-      // Create a temporary link and click it
-      const link = document.createElement('a');
-      const ext = formatSelect.value.split('/')[1] || 'jpg';
-      link.download = `${currentFileName}.${ext}`;
-      link.href = convertedDataUrl;
-
-      // For some browsers, using a blob URL is more reliable for large data URIs
-      try {
-        // Convert dataURL to blob then to object URL
-        const arr = convertedDataUrl.split(',');
-        const mime = arr[0].match(/:(.*?);/)[1];
-        const bstr = atob(arr[1]);
-        let n = bstr.length;
-        const u8arr = new Uint8Array(n);
-        while (n--) {
-          u8arr[n] = bstr.charCodeAt(n);
+        for (const fmt of preferredFormats) {
+          const blob = await new Promise(res => canvas.toBlob(res, fmt, quality));
+          if (blob && blob.size > 0) {
+            const url = URL.createObjectURL(blob);
+            cleanupObjectUrl();
+            lastObjectUrl = url;
+            const ext = fmt.split('/')[1];
+            downloadLink.href = url;
+            downloadLink.download = `${currentFileName}.${ext}`;
+            downloadLink.style.display = 'inline-block';
+            return;
+          }
         }
-        const blob = new Blob([u8arr], { type: mime });
-        const objectUrl = URL.createObjectURL(blob);
-        link.href = objectUrl;
+        alert('Compression failed — try another browser.');
+      });
 
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        // revoke object URL after short delay
-        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
-      } catch (err) {
-        // Fallback to data URL
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-      }
-    });
-
-  })();
-</script>
+      window.addEventListener('beforeunload', cleanupObjectUrl);
+    })();
+  </script>
 
 
 <section class="content-info" style="max-width:800px;margin:80px auto 100px;text-align:center;color:#d9d9d9;line-height:1.6;font-size:0.95rem;">
@@ -576,6 +483,7 @@ button:hover {
 
 </body>
 </html>
+
 
 
 
