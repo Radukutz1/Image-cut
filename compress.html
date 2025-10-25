@@ -347,20 +347,6 @@ button:hover {
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const url = window.location.href;
-  const navButtons = {
-    compress: document.getElementById("btnImageCut"),
-    convert: document.getElementById("btnConverter"),
-    pdf: document.getElementById("btnPdfConvert"),
-    size: document.getElementById("btnSizeCompress")
-  };
-  Object.values(navButtons).forEach(btn => btn.classList.remove("active"));
-  if (url.includes("/convert")) navButtons.convert.classList.add("active");
-  else if (url.includes("/pdfconvert")) navButtons.pdf.classList.add("active");
-  else if (url.includes("/sizecompress")) navButtons.size.classList.add("active");
-  else navButtons.compress.classList.add("active");
-
   const dropZone = document.getElementById('dropZone');
   const imageInput = document.getElementById('imageInput');
   const previewImage = document.getElementById('previewImage');
@@ -440,6 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+
 
 
 
