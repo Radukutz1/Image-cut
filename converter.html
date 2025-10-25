@@ -394,23 +394,13 @@
   </a>
 
   <!-- Buttons (far right) -->
-  <div class="nav-buttons">
-    <button id="btnImageCut" class="nav-btn" onclick="location.href='https://image-cut.com/compress'">
-      <i class="fas fa-scissors"></i> <span class="nav-text">Image Compressor</span>
-    </button>
-
-    <button id="btnConverter" class="nav-btn" onclick="location.href='https://image-cut.com/convert'">
-      <i class="fas fa-sync-alt"></i> <span class="nav-text">Image Format Converter</span>
-    </button>
-
-    <button id="btnPdfConvert" class="nav-btn" onclick="location.href='https://image-cut.com/PDFconvert'">
-      <i class="fas fa-file-pdf"></i> <span class="nav-text">Convert JPG to PDF</span>
-    </button>
-   
-    <button id="btnSizeCompress" class="nav-btn" onclick="location.href='https://image-cut.com/sizecompress'">
-    <i class="fas fa-compress-arrows-alt"></i> <span class="nav-text">Image Size Compressor</span>
-  </button>
-  </div>
+  <div class="nav-buttons" role="navigation" aria-label="main tools">
+       <button type="button" class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home </button>
+      <button type="button" class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Image Compressor</button>
+      <button type="button" class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert Format</button>
+      <button type="button" class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF to JPG</button>
+      <button type="button" class="nav-btn active" onclick="location.href='/sizecompress'"><i class="fas fa-compress"></i> Size Compress</button>
+    </div>
 </div>
 
 
@@ -584,6 +574,7 @@
 
 </body>
 </html>
+
 
 
 
