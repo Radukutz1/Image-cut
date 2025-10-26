@@ -194,6 +194,10 @@
       background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
       border-radius: 3px;
     }
+.file-input-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 20px rgba(166,193,238,0.8);
+}
 
     .drop-zone {
       margin: 20px 0;
@@ -284,34 +288,37 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const url = window.location.href;
-  const navButtons = {
-    compress: document.getElementById("btnImageCut"),
-    convert: document.getElementById("btnConverter"),
-    pdf: document.getElementById("btnPdfConvert"),
-    size: document.getElementById("btnSizeCompress")
-  };
-  Object.values(navButtons).forEach(btn => btn.classList.remove("active"));
-  if (url.includes("/convert")) navButtons.convert.classList.add("active");
-  else if (url.includes("/pdfconvert")) navButtons.pdf.classList.add("active");
-  else if (url.includes("/sizecompress")) navButtons.size.classList.add("active");
-  else navButtons.compress.classList.add("active");
 
+  // ✅ Safe nav highlighting (no broken IDs)
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    const href = btn.getAttribute('onclick');
+    if (href && href.includes(currentPath)) btn.classList.add('active');
+  });
+
+  // ✅ Elements
   const dropZone = document.getElementById('dropZone');
   const imageInput = document.getElementById('imageInput');
   const convertButton = document.getElementById('convertButton');
   let currentFile = null;
 
+  // ✅ Handle file
   function handleFile(file) {
-    if (!file.type.startsWith("image/")) return;
+    if (!file.type.startsWith("image/")) {
+      alert("Please select a valid image file.");
+      return;
+    }
     currentFile = file;
     convertButton.style.display = 'inline-block';
   }
 
+  // ✅ Upload handlers
   imageInput.addEventListener('change', e => {
     const file = e.target.files[0];
     if (file) handleFile(file);
+    e.target.value = ''; // Prevents needing double-click
   });
+
   dropZone.addEventListener('dragover', e => {
     e.preventDefault();
     dropZone.classList.add('dragover');
@@ -324,23 +331,34 @@ document.addEventListener('DOMContentLoaded', function () {
     if (file) handleFile(file);
   });
 
-  convertButton.addEventListener('click', async () => {
-    if (!currentFile) return;
+  // ✅ Convert to PDF
+  convertButton.addEventListener('click', () => {
+    if (!currentFile) {
+      alert('Please upload an image first.');
+      return;
+    }
+
     const reader = new FileReader();
-    reader.onload = async e => {
+    reader.onload = e => {
       const img = new Image();
-      img.src = e.target.result;
       img.onload = () => {
         const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [img.width, img.height] });
+        const pdf = new jsPDF({
+          orientation: img.width > img.height ? 'landscape' : 'portrait',
+          unit: 'px',
+          format: [img.width, img.height]
+        });
         pdf.addImage(img, 'JPEG', 0, 0, img.width, img.height);
-        pdf.save('converted.pdf');
+        pdf.save(`${currentFile.name.split('.')[0]}.pdf`);
       };
+      img.src = e.target.result;
     };
     reader.readAsDataURL(currentFile);
   });
+
 });
 </script>
+
 
 <section class="content-info" style="max-width:800px;margin:80px auto 100px;text-align:center;color:#d9d9d9;line-height:1.6;font-size:0.95rem;">
   <h2 style="color:#fff;font-size:1.6rem;margin-bottom:16px;">About Our JPG to PDF Converter</h2>
@@ -374,6 +392,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+
 
 
 
