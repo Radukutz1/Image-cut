@@ -289,7 +289,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ✅ Safe nav highlighting (no broken IDs)
+  // ✅ Nav fix (no ID errors)
   const currentPath = window.location.pathname;
   document.querySelectorAll('.nav-btn').forEach(btn => {
     const href = btn.getAttribute('onclick');
@@ -300,25 +300,76 @@ document.addEventListener('DOMContentLoaded', function () {
   const dropZone = document.getElementById('dropZone');
   const imageInput = document.getElementById('imageInput');
   const convertButton = document.getElementById('convertButton');
-  let currentFile = null;
+  const previewList = document.createElement('div');
+  previewList.id = 'previewList';
+  previewList.style.marginTop = '1rem';
+  dropZone.parentNode.insertBefore(previewList, convertButton);
 
-  // ✅ Handle file
-  function handleFile(file) {
-    if (!file.type.startsWith("image/")) {
-      alert("Please select a valid image file.");
+  let currentFiles = [];
+
+  // ✅ Handle multiple files
+  function handleFiles(files) {
+    const validFiles = Array.from(files).filter(f => f.type.startsWith("image/"));
+    if (!validFiles.length) {
+      alert("Please select valid image files.");
       return;
     }
-    currentFile = file;
+
+    currentFiles = [...currentFiles, ...validFiles];
+    renderPreviews();
     convertButton.style.display = 'inline-block';
   }
 
-  // ✅ Upload handlers
+  // ✅ Render preview list
+  function renderPreviews() {
+    previewList.innerHTML = '';
+    currentFiles.forEach((file, index) => {
+      const div = document.createElement('div');
+      div.style.display = 'flex';
+      div.style.alignItems = 'center';
+      div.style.gap = '10px';
+      div.style.marginBottom = '8px';
+      div.style.color = '#fff';
+
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.style.width = '60px';
+      img.style.height = '60px';
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = '8px';
+      img.style.border = '1px solid #444';
+
+      const name = document.createElement('span');
+      name.textContent = file.name;
+      name.style.flex = '1';
+
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '✕';
+      removeBtn.style.background = 'transparent';
+      removeBtn.style.border = 'none';
+      removeBtn.style.color = '#aaa';
+      removeBtn.style.cursor = 'pointer';
+      removeBtn.title = 'Remove image';
+      removeBtn.onclick = () => {
+        currentFiles.splice(index, 1);
+        renderPreviews();
+        if (!currentFiles.length) convertButton.style.display = 'none';
+      };
+
+      div.appendChild(img);
+      div.appendChild(name);
+      div.appendChild(removeBtn);
+      previewList.appendChild(div);
+    });
+  }
+
+  // ✅ File input
   imageInput.addEventListener('change', e => {
-    const file = e.target.files[0];
-    if (file) handleFile(file);
-    e.target.value = ''; // Prevents needing double-click
+    handleFiles(e.target.files);
+    e.target.value = ''; // Prevent double-click issue
   });
 
+  // ✅ Drag & drop
   dropZone.addEventListener('dragover', e => {
     e.preventDefault();
     dropZone.classList.add('dragover');
@@ -327,37 +378,45 @@ document.addEventListener('DOMContentLoaded', function () {
   dropZone.addEventListener('drop', e => {
     e.preventDefault();
     dropZone.classList.remove('dragover');
-    const file = e.dataTransfer.files[0];
-    if (file) handleFile(file);
+    handleFiles(e.dataTransfer.files);
   });
 
-  // ✅ Convert to PDF
-  convertButton.addEventListener('click', () => {
-    if (!currentFile) {
-      alert('Please upload an image first.');
+  // ✅ Convert to multi-page PDF
+  convertButton.addEventListener('click', async () => {
+    if (!currentFiles.length) {
+      alert('Please upload at least one image.');
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = e => {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    for (let i = 0; i < currentFiles.length; i++) {
+      const file = currentFiles[i];
+      const dataUrl = await new Promise(res => {
+        const reader = new FileReader();
+        reader.onload = e => res(e.target.result);
+        reader.readAsDataURL(file);
+      });
+
       const img = new Image();
-      img.onload = () => {
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({
-          orientation: img.width > img.height ? 'landscape' : 'portrait',
-          unit: 'px',
-          format: [img.width, img.height]
-        });
-        pdf.addImage(img, 'JPEG', 0, 0, img.width, img.height);
-        pdf.save(`${currentFile.name.split('.')[0]}.pdf`);
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(currentFile);
+      await new Promise(res => {
+        img.onload = res;
+        img.src = dataUrl;
+      });
+
+      if (i > 0) pdf.addPage();
+      const width = pdf.internal.pageSize.getWidth();
+      const height = (img.height * width) / img.width;
+      pdf.addImage(img, 'JPEG', 0, 0, width, height);
+    }
+
+    pdf.save('converted-images.pdf');
   });
 
 });
 </script>
+
 
 
 <section class="content-info" style="max-width:800px;margin:80px auto 100px;text-align:center;color:#d9d9d9;line-height:1.6;font-size:0.95rem;">
@@ -392,6 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+
 
 
 
