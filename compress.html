@@ -181,6 +181,11 @@
       background-repeat: no-repeat;
       background-position: right 12px center;
       background-size: 16px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    select:hover, input[type="number"]:hover {
+      box-shadow: 0 0 18px rgba(166,193,238,0.35);
+      transform: scale(1.02);
     }
     select option { background: #16213e; color: #ffffff; }
 
@@ -264,6 +269,13 @@
           <option value="custom">Custom (W × H)</option>
         </select>
 
+        <!-- NEW: format selector (matches style) -->
+        <select id="formatSelect" aria-label="Choose output format">
+          <option value="webp">WEBP (Smaller Size)</option>
+          <option value="jpeg">JPG (Good Compatibility)</option>
+          <option value="png">PNG (Lossless)</option>
+        </select>
+
         <div id="customInputs" style="display:none;">
           <div class="small-inputs">
             <input type="number" id="customWidth" placeholder="Width px" min="1" />
@@ -281,7 +293,7 @@
       <canvas id="canvas"></canvas>
     </div>
 
-    <!-- About / features / how to use (restored) -->
+    <!-- About / features / how to use (restored, unchanged content) -->
     <section class="content-info" style="margin-top:36px;">
       <h2>About Image Cut’s Format Converter</h2>
       <p>
@@ -296,7 +308,7 @@
       <ul>
         <li>🔄 <b>Instant Conversion:</b> Change image formats in seconds — JPG ↔ PNG ↔ WebP ↔ AVIF.</li>
         <li>💡 <b>No Quality Loss:</b> Maintain image clarity with advanced compression control.</li>
-        <li>🔐 <b>Private & Secure:</b> Files never leave your browser; all processing is local.</li>
+        <li>🔐 <b>Private & Secure:</b> Your files never leave your browser; all processing is local.</li>
         <li>🌍 <b>Universal Compatibility:</b> Works on desktop, mobile, and all major browsers.</li>
       </ul>
 
@@ -330,6 +342,7 @@
     const previewImage = document.getElementById('previewImage');
     const metaInfo = document.getElementById('metaInfo');
     const sizeSelect = document.getElementById('sizeSelect');
+    const formatSelect = document.getElementById('formatSelect');
     const customInputs = document.getElementById('customInputs');
     const customWidth = document.getElementById('customWidth');
     const customHeight = document.getElementById('customHeight');
@@ -478,6 +491,12 @@
       return {w: originalWidth, h: originalHeight};
     }
 
+    // Remember last chosen format (persist)
+    const savedFormat = localStorage.getItem('lastFormat');
+    if (savedFormat && document.getElementById('formatSelect')) {
+      document.getElementById('formatSelect').value = savedFormat;
+    }
+
     // Compression workflow
     compressButton.addEventListener('click', async () => {
       if (!currentFile || !previewImage.src) {
@@ -508,10 +527,23 @@
           ctx.drawImage(img, 0, 0, targetW, targetH);
 
           const quality = 0.82;
+
+          // Use user-selected format (webp/jpeg/png). Save preference.
+          const fmtEl = document.getElementById('formatSelect');
+          let selectedFormat = (fmtEl && fmtEl.value) ? fmtEl.value : 'webp';
+          try { localStorage.setItem('lastFormat', selectedFormat); } catch (e) { /* ignore storage errors */ }
+
+          // normalize mime
+          let mime = 'image/webp';
+          if (selectedFormat === 'jpeg' || selectedFormat === 'jpg') mime = 'image/jpeg';
+          else if (selectedFormat === 'png') mime = 'image/png';
+          else mime = 'image/webp';
+
           let blob = await new Promise(resolve => {
-            try { canvas.toBlob(resolve, 'image/webp', quality); } catch(e) { resolve(null); }
+            try { canvas.toBlob(resolve, mime, quality); } catch(e) { resolve(null); }
           });
 
+          // If selected format fails, fallback to jpeg
           if (!blob || blob.size === 0) {
             blob = await new Promise(resolve => {
               try { canvas.toBlob(resolve, 'image/jpeg', quality); } catch(e) { resolve(null); }
@@ -525,8 +557,10 @@
 
           cleanupObjectUrl();
           lastObjectUrl = URL.createObjectURL(blob);
-          const mime = blob.type || 'image/jpeg';
-          const ext = mime.split('/')[1] || 'jpg';
+          const outMime = blob.type || 'image/jpeg';
+          let ext = outMime.split('/')[1] || 'jpg';
+          // normalize jpeg extension
+          if (ext === 'jpeg') ext = 'jpg';
           downloadLink.href = lastObjectUrl;
           downloadLink.download = `${currentFileName}.${ext}`;
           downloadLink.style.display = 'inline-block';
