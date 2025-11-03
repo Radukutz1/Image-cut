@@ -150,6 +150,65 @@
       color: #cccccc;
       line-height: 1.6;
     }
+    .hero h1 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* === Hero Section Fade-In === */
+.hero {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+/* === Hero Title (already using Option 1) === */
+.hero h1 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* === Hero Paragraph (slightly delayed for smoother reveal) === */
+.hero p {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* === Intro Section Animation === */
+.intro-content {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+/* === Shared Animation Keyframes === */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
     .tool-grid {
       display: grid;
@@ -251,11 +310,11 @@
   
   <div class="top-nav">
     <a href="/" class="logo">
-      <img src="imagecutlogo.png" alt="Image Cut Logo">
+      <img src="imagecutlogo.jpg" alt="Image Cut Logo">
       <span class="logo-text">Image Cut</span>
     </a>
     <div class="nav-buttons">
-      <button class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+       <button class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home </button>
       <button class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Compress</button>
       <button class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert</button>
       <button class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF Convert</button>
@@ -264,7 +323,7 @@
   </div>
 
   <section class="hero">
-    <h1>Free Online Image Tools by Image Cut</h1>
+    <h1>Image Cut</h1>
     <p>
       Welcome to <strong>Image Cut</strong> — a fast, secure, and easy-to-use toolkit 
       designed for creators, professionals, and students. Whether you need to 
@@ -512,8 +571,8 @@
 
   <footer>
     <p>&copy; 2025 Image Cut | 
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/about"> About us</a> |
+      <a href="/privacy">Privacy Policy</a> 
+      <a href="/about"> About us</a>
       <a href="mailto:contact@image-cut.com">Contact</a>
     </p>
     <p>Your files are processed locally. Nothing is uploaded or stored — 100% secure and private.</p>
@@ -521,8 +580,3 @@
   </footer>
 </body>
 </html>
-
-
-
-
-
