@@ -18,6 +18,11 @@
       "permanent": true
     },
     {
+    "source": "/about.html",
+    "destination": "/about",
+    "permanent": true
+    },
+    {
       "source": "/pdfconv.html",
       "destination": "/pdfconvert",
       "permanent": true
@@ -54,6 +59,9 @@
       "source": "/privacy",
       "destination": "/privacy.html"
     },
+    {
+      "source": "/about",
+      "destination": "about.html"
     {
       "source": "/",
       "destination": "/index.html"
