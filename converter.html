@@ -1,468 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K36CY569X6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-K36CY569X6');
-  </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617954284506964"
-     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0e27">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.image-cut.com/convert" />
-
-  <!-- SEO Meta -->
-  <title>Convert Images Online — JPG, PNG, WebP & More | Image Cut</title>
-  <meta name="description" content="Free image format converter by Image Cut — instantly convert JPG, PNG, WebP, and other formats online. Fast, private, and simple. Ideal for e-commerce, content creation, and web uploads.">
-  <meta name="keywords" content="image converter, convert JPG to PNG, convert PNG to JPG, WebP converter, image format converter, online converter, Image Cut">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Convert Images Online — JPG, PNG, WebP & More | Image Cut">
-  <meta property="og:description" content="Convert image formats instantly — JPG, PNG, WebP, and more. Free, private, and lightning fast with Image Cut.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://image-cut.com/convert">
-  <meta property="og:image" content="https://image-cut.com/og-convert.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Convert Images Online — JPG, PNG, WebP & More | Image Cut">
-  <meta name="twitter:description" content="Free and secure image format converter — easily convert JPG, PNG, and WebP online with no quality loss.">
-  <meta name="twitter:image" content="https://image-cut.com/og-convert.jpg">
-
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Fonts & Icons -->
+  <title>Image Format Converter</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0a0e27, #1a1a2e, #16213e, #000000);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #ffffff;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    /* navigation bar */
-    .top-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10, 14, 39, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-      z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-/* MOBILE NAVIGATION FIX */
-@media (max-width: 768px) {
-  .nav-buttons {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    gap: 8px;
-    padding-bottom: 4px;
-  }
-
-  .nav-btn {
-    flex: 0 0 auto;
-    font-size: 0.8rem;
-    padding: 6px 12px;
-  }
-
-  .top-nav {
-    flex-wrap: nowrap;
-    overflow: hidden;
-  }
-
-  /* Optional: hide scrollbar for a cleaner look */
-  .nav-buttons::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-   /* navigation buttons - compact */
-  .nav-btn {
-    background: transparent;
-    border: 2px solid #a6c1ee;
-    color: #ffffff;
-    padding: 6px 14px; /* tighter padding */
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(166,193,238,0.5);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    width: auto;       /* <-- shrink to fit */
-    min-width: unset;  /* <-- prevent extra stretching */
-  }
-
-  .nav-btn:hover {
-    background: #a6c1ee;
-    color: #0a0e27;
-    box-shadow: 0 0 20px rgba(166,193,238,0.9);
-    transform: translateY(-2px) scale(1.02);
-  }
-
-  /* Intro Section - more spacing */
-  .intro-section {
-    text-align: center;
-    margin: 140px auto 40px; /* bigger gap below header */
-    max-width: 600px;
-    color: #e0e0e0;
-  }
-
-  .intro-section h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #ffffff;
-  }
-
-  /* extra breathing room before tool */
-  .container {
-    margin: 40px auto 40px; /* added top margin */
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-
-    h1 {
-      margin: 0 0 20px;
-      font-size: 2rem;
-      font-weight: 700;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      position: relative;
-      display: inline-block;
-    }
-
-    h1::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      right: 25%;
-      width: 50%;
-      height: 3px;
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-      border-radius: 3px;
-    }
-
-    /* drag & drop area */
-    .drop-zone {
-      margin: 20px 0;
-      padding: 30px;
-      border: 2px dashed rgba(255, 255, 255, 0.4);
-      border-radius: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .drop-zone.dragover {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: #a6c1ee;
-      transform: scale(1.02);
-    }
-
-    .drop-zone p {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #ddd;
-    }
-
-    .file-input-wrapper {
-      margin-top: 15px;
-    }
-
-    input[type="file"] {
-      display: none;
-    }
-
-    .file-input-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background: linear-gradient(90deg, #1a1a2e, #16213e);
-      border: none;
-      border-radius: 10px;
-      color: #ffffff;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .file-input-button:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .preview-container img {
-      max-width: 100%;
-      max-height: 250px;
-      margin: 20px auto;
-      display: block;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .action-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    select, button {
-      margin: 5px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 300px;
-    }
-
-    select {
-      background: linear-gradient(90deg, #1a1a2e, #16213e);
-      color: white;
-      appearance: none;
-      padding-right: 30px;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 15px;
-    }
-
-    select option {
-      background: #16213e;
-      color: #ffffff;
-    }
-
-    button {
-      background: linear-gradient(90deg, #1a1a2e, #16213e);
-      color: white;
-    }
-
-    button:hover, select:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .download-container {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .intro-section h2 { font-size: 1.4rem; }
-      .intro-section p { font-size: 0.9rem; }
-      .container { max-width: 90%; padding: 20px; }
-    }
-
-    @media (max-width: 480px) {
-      .intro-section h2 { font-size: 1.2rem; }
-      .intro-section p { font-size: 0.85rem; }
-    }
-
-.privacy-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(10,14,39,0.85);
-  backdrop-filter: blur(6px);
-  color: #bbbbbb;
-  font-size: 0.75rem;   /* smaller text */
-  text-align: center;
-  padding: 6px 10px;    /* slimmer padding */
-  border-top: 1px solid rgba(255,255,255,0.08);
-  z-index: 9999;
-}
-
-.privacy-footer i {
-  color: #a6c1ee;
-  margin-right: 5px;
-  font-size: 0.8rem;
-}
-
-.top-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(10,14,39,0.9);
-  backdrop-filter: blur(10px);
-  padding: 10px 18px;
-  display: flex;
-  justify-content: space-between; /* Logo left, buttons right */
-  align-items: center;
-  z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.25s ease;
-}
-
-.logo:hover {
-  transform: translateY(-2px) scale(1.02);
-}
-
-.logo img {
-  height: 32px;
-  width: auto;
-  border-radius: 6px;
-}
-
-.logo-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-
-
-  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617954284506964" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<!-- navigation -->
-<div class="top-nav">
-  <!-- Logo (far left) -->
-  <a href="https://image-cut.com" class="logo">
-    <img src="imagecutlogo.png" alt="Image Cut Logo">
-    <span class="logo-text">Image Cut</span>
-  </a>
-
-  <!-- Buttons (far right) -->
-  <div class="nav-buttons" role="navigation" aria-label="main tools">
-       <button type="button" class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home </button>
-      <button type="button" class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Image Compressor</button>
-      <button type="button" class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert Format</button>
-      <button type="button" class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> JPG to PDF </button>
-      <button type="button" class="nav-btn active" onclick="location.href='/sizecompress'"><i class="fas fa-compress"></i> Size Compress</button>
+  <div class="top-nav">
+    <a href="/" class="logo">
+      <img src="images/imagecutlogo.png" alt="Image Cut Logo">
+      <span class="logo-text">Image Cut</span>
+    </a>
+    <div class="nav-buttons">
+      <button class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+      <button class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Compress</button>
+      <button class="nav-btn active" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert</button>
+      <button class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i>JPG to PDF</button>
+      <button class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress-arrows-alt"></i> Size Compress</button>
     </div>
-</div>
-
-
-  <!-- intro -->
-  <div class="intro-section">
-    <h2>Convert Images Effortlessly</h2>
-    <p>Transform your images into JPG, PNG, WEBP, or AVIF in seconds — free and simple.</p>
   </div>
 
-  <!-- tool -->
-  <div class="container">
-    <h1><i class="fas fa-sync-alt"></i> Image Format Converter</h1>
+  <main class="tool-page">
+    <div class="intro-section">
+      <h2>Convert Images Effortlessly</h2>
+      <p>Transform your images into JPG, PNG, WEBP, or AVIF in seconds — free and simple.</p>
+    </div>
 
-    <div class="drop-zone" id="dropZone">
-      <p>Drag & Drop your image here or click below</p>
-      <div class="file-input-wrapper">
-        <label for="imageInput" class="file-input-button">Choose Image</label>
-        <input type="file" id="imageInput" accept="image/*">
+    <div class="container">
+      <h1><i class="fas fa-sync-alt"></i> Format Converter</h1>
+      
+      <div id="dropZone" class="drop-zone">
+        <p>Drag & Drop or click below</p>
+        <button class="file-input-button">Choose Image</button>
+        <input type="file" id="imageInput" accept="image/*" style="display:none;">
       </div>
+
+      <div class="preview-container">
+        <img id="previewImage" style="display:none;" alt="Preview">
+      </div>
+
+      <div class="tool-controls" id="actionContainer" style="display:none;">
+        <select id="formatSelect">
+          <option value="image/jpeg">JPG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WEBP</option>
+          <option value="image/avif">AVIF</option>
+        </select>
+        <button id="convertButton" class="btn-primary">Convert</button>
+      </div>
+
+      <div style="margin-top:15px; display:none;" id="dlContainer">
+         <button id="downloadButton" class="btn-primary">Download</button>
+      </div>
+      
+      <canvas id="canvas" style="display:none;"></canvas>
     </div>
 
-    <div class="preview-container">
-      <img id="previewImage" style="display:none;" alt="Preview">
-    </div>
+    <section class="content-info">
+      <h2>About Image Cut’s Format Converter</h2>
+      <p>
+        <strong>Image Cut’s Free Image Format Converter</strong> lets you instantly 
+        convert images between JPG, PNG, WebP, and AVIF formats — directly in your browser, without uploading files to any server. 
+        Your privacy is fully protected since all conversions happen locally.
+      </p>
+      <p>
+        Whether you’re optimizing for web performance, switching image formats for better compression, 
+        or ensuring compatibility with design tools, this converter makes it simple and lightning-fast.
+      </p>
+    </section>
+  </main>
 
-    <div class="action-container" style="display:none;">
-      <select id="formatSelect">
-        <option value="image/jpeg">JPG</option>
-        <option value="image/png">PNG</option>
-        <option value="image/webp">WEBP</option>
-        <option value="image/avif">AVIF</option>
-      </select>
-
-      <button id="convertButton"><i class="fas fa-exchange-alt"></i> Convert</button>
-    </div>
-
-    <div class="download-container" style="display:none;">
-      <button id="downloadButton"><i class="fas fa-download"></i> Download</button>
-    </div>
-
-    <canvas id="canvas" style="display:none;"></canvas>
-  </div>
+  <footer class="privacy-footer">
+    <p>Processed locally. Secure & Private.</p>
+  </footer>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-  const url = window.location.href;
-  const navButtons = {
-    compress: document.getElementById("btnImageCut"),
-    convert: document.getElementById("btnConverter"),
-    pdf: document.getElementById("btnPdfConvert"),
-    size: document.getElementById("btnSizeCompress")
-  };
-
-  Object.values(navButtons).forEach(btn => btn.classList.remove("active"));
-
-  if (url.includes("/convert")) navButtons.convert.classList.add("active");
-  else if (url.includes("/pdfconvert")) navButtons.pdf.classList.add("active");
-  else if (url.includes("/sizecompress")) navButtons.size.classList.add("active");
-  else navButtons.compress.classList.add("active");
-});
-
-
     const dropZone = document.getElementById('dropZone');
     const imageInput = document.getElementById('imageInput');
     const previewImage = document.getElementById('previewImage');
@@ -470,55 +96,56 @@
     const formatSelect = document.getElementById('formatSelect');
     const convertButton = document.getElementById('convertButton');
     const downloadButton = document.getElementById('downloadButton');
-    const actionContainer = document.querySelector('.action-container');
-    const downloadContainer = document.querySelector('.download-container');
-
+    const actionContainer = document.getElementById('actionContainer');
+    const dlContainer = document.getElementById('dlContainer');
+    
     let convertedDataUrl = null;
 
-    function handleFile(file) {
-      if (!file.type.startsWith("image/")) return;
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        previewImage.src = event.target.result;
-        previewImage.style.display = 'block';
-        actionContainer.style.display = 'flex';
-        downloadContainer.style.display = 'none';
-      };
-      reader.readAsDataURL(file);
-    }
-
-    imageInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) handleFile(file);
+    // Ensure button click inside dropzone doesn't double-trigger
+    document.querySelector('.file-input-button').addEventListener('click', (e) => {
+       e.stopPropagation();
+       imageInput.click();
     });
 
+    dropZone.addEventListener('click', () => imageInput.click());
+    
+    imageInput.addEventListener('change', (e) => { 
+      if(e.target.files[0]) loadFile(e.target.files[0]); 
+    });
+    
     dropZone.addEventListener('dragover', (e) => {
       e.preventDefault();
       dropZone.classList.add('dragover');
     });
-
+    
     dropZone.addEventListener('dragleave', () => {
       dropZone.classList.remove('dragover');
     });
-
+    
     dropZone.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropZone.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
-      if (file) handleFile(file);
+      dropZone.classList.remove('dragover'); 
+      if(e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
     });
 
+    function loadFile(f){
+      if(!f.type.startsWith('image/')) return;
+      const r = new FileReader();
+      r.onload = (e) => { 
+        previewImage.src = e.target.result; 
+        previewImage.style.display = 'block'; 
+        actionContainer.style.display = 'flex'; 
+        dlContainer.style.display = 'none'; 
+      };
+      r.readAsDataURL(f);
+    }
+
     convertButton.addEventListener('click', () => {
-      const ctx = canvas.getContext('2d');
-      canvas.width = previewImage.naturalWidth;
+      canvas.width = previewImage.naturalWidth; 
       canvas.height = previewImage.naturalHeight;
-      ctx.drawImage(previewImage, 0, 0);
-
-      const format = formatSelect.value;
-      convertedDataUrl = canvas.toDataURL(format);
-
-      downloadContainer.style.display = 'flex';
+      canvas.getContext('2d').drawImage(previewImage, 0, 0);
+      convertedDataUrl = canvas.toDataURL(formatSelect.value);
+      dlContainer.style.display = 'block';
     });
 
     downloadButton.addEventListener('click', () => {
@@ -529,59 +156,5 @@
       link.click();
     });
   </script>
-  <section class="content-info" style="max-width:800px;margin:80px auto 100px;text-align:center;color:#d9d9d9;line-height:1.6;font-size:0.95rem;">
-  <h2 style="color:#fff;font-size:1.6rem;margin-bottom:16px;">About Image Cut’s Format Converter</h2>
-  <p>
-    <strong>Image Cut’s Free Image Format Converter</strong> lets you instantly 
-    <b>convert images between JPG, PNG, WebP, and AVIF formats</b> — directly in your browser, without uploading files to any server. 
-    Your privacy is fully protected since all conversions happen locally.
-  </p>
-  <p>
-    Whether you’re optimizing for web performance, switching image formats for better compression, 
-    or ensuring compatibility with design tools, this converter makes it simple and lightning-fast.
-  </p>
-
-  <h3 style="color:#fff;font-size:1.2rem;margin:28px 0 10px;">Key Features</h3>
-  <ul style="list-style:none;padding:0;margin:0 auto;max-width:640px;text-align:left;">
-    <li>🔄 <b>Instant Conversion:</b> Change image formats in seconds — JPG ↔ PNG ↔ WebP ↔ AVIF.</li>
-    <li>💡 <b>No Quality Loss:</b> Maintain image clarity with advanced compression control.</li>
-    <li>🔐 <b>Private & Secure:</b> Files never leave your browser; all processing is local.</li>
-    <li>🌍 <b>Universal Compatibility:</b> Works on desktop, mobile, and all major browsers.</li>
-  </ul>
-
-  <h3 style="color:#fff;font-size:1.2rem;margin:28px 0 10px;">How to Use the Converter</h3>
-  <p>
-    1️⃣ Upload or drag your image into the converter box.<br>
-    2️⃣ Choose the desired format (JPG, PNG, WebP, or AVIF).<br>
-    3️⃣ Click “Convert” to instantly generate your new file.<br>
-    4️⃣ Download the result and enjoy optimized, high-quality output.
-  </p>
-
-  <p style="margin-top:24px;">
-    Need more tools? Try our 
-    <a href="https://image-cut.com" style="color:#a6c1ee;text-decoration:none;">Image Compressor & Resizer</a> 
-    or 
-    <a href="https://image-cut.com/PDFconvert" style="color:#a6c1ee;text-decoration:none;">JPG to PDF Converter</a>.
-  </p>
-</section>
-
-  <footer class="privacy-footer">
-  <p><i class="fas fa-shield-alt"></i> Privacy Notice: 
-    Your images are processed locally in your browser. 
-    We do not collect, upload, or store any files.
-  </p>
-</footer>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
