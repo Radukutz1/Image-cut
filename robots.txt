@@ -1,9 +1,6 @@
-# robots.txt for https://image-cut.com
-
-# Allow all search engines to crawl the main pages
 User-agent: *
+Allow: /
 Disallow: /private/
 Disallow: /test/
 
-# Sitemap location
-Sitemap: https://image-cut.com/sitemap.xml
+Sitemap: https://www.image-cut.com/sitemap.xml
