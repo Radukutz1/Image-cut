@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Learn more about Image-Cut — an advanced online tool for image optimization, compression, and performance. Discover how our technology and Autoclik.net automation tools enhance speed, SEO, and efficiency." />
-  <meta name="author" content="Image-Cut" />
-  <title>About Us | Image-Cut</title>
+  <meta name="theme-color" content="#0a0e27" />
+  
+  <meta name="description" content="Learn more about Image Cut — an advanced online tool for image optimization, compression, and performance." />
+  <meta name="author" content="Image Cut" />
+  <title>About Us | Image Cut</title>
   
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -13,36 +15,45 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  
   <div class="top-nav">
     <a href="/" class="logo">
-      <img src="images/imagecutlogo.png" alt="Image-Cut Logo" />
-      <span class="logo-text">Image-Cut</span>
+      <img src="images/imagecutlogo.png" alt="Image Cut Logo" />
+      <span class="logo-text">Image Cut</span>
     </a>
     <div class="nav-buttons">
-      <button class="nav-btn" onclick="location.href='/'">Home</button>
-      <button class="nav-btn active" onclick="location.href='/about'">About</button>
-      <button class="nav-btn" onclick="location.href='mailto:contact@image-cut.com'">Contact</button>
+      <button class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+      <button class="nav-btn active" onclick="location.href='/about'"><i class="fas fa-info-circle"></i> About</button>
+      <button class="nav-btn" onclick="location.href='mailto:contact@image-cut.com'"><i class="fas fa-envelope"></i> Contact</button>
     </div>
   </div>
 
-  <main class="text-page about-hero">
-    <h1>About Us</h1>
+  <main class="text-page">
+    
+    <div class="intro-section" style="margin-bottom: 40px;">
+        <h1>About Image Cut</h1>
+        <p style="color: var(--muted);">Speed, precision, and privacy for the modern web.</p>
+    </div>
+
+    <h1>Our Mission</h1>
     <p>
-      At <strong>Image-Cut</strong>, we believe that speed, precision, and visual quality are the foundation of every exceptional online experience.
+      At <strong>Image Cut</strong>, we believe that speed, precision, and visual quality are the foundation of every exceptional online experience.
       Whether you manage a digital store, a creative blog, or a high-traffic portfolio, your images define how fast your site loads,
       how professional it looks, and how search engines rank it. Our mission is to make advanced image optimization accessible, reliable,
       and effortless — without sacrificing quality.
     </p>
 
-    <h2>The Technology Behind Image-Cut</h2>
+    <h2>The Technology Behind Image Cut</h2>
     <p>
-      Image-Cut is built for creators who value both clarity and performance. Each uploaded file is analyzed and optimized using
+      Image Cut is built for creators who value both clarity and performance. Each uploaded file is analyzed and optimized using
       cutting-edge algorithms that understand the difference between <strong>lossy</strong> and <strong>lossless compression</strong>.
     </p>
     <p>
@@ -69,39 +80,32 @@
       <li><strong>User Experience:</strong> Visitors expect a site to load within two seconds. Lightweight images keep them engaged and reduce bounce rates.</li>
       <li><strong>Bandwidth Efficiency:</strong> Smaller files save hosting costs and improve performance across all devices.</li>
     </ul>
-    <p>
-      That’s why <strong>Image-Cut</strong> is more than a tool — it’s an essential step in your site’s optimization workflow.
-    </p>
 
-    <h2>Beyond Images — Smart Automation with Autoclik.net</h2>
+    <h2>Beyond Images — Smart Automation</h2>
     <p>
       Our dedication to performance extends beyond visuals. We also create automation tools that make digital life easier.
-      One of our most popular solutions is our <a href="https://www.autoclik.net" target="_blank">Autoclicker</a> — 
+      One of our most popular solutions is our <a href="https://www.autoclik.net" target="_blank" style="color: var(--accent);">Autoclicker</a> — 
       a lightweight and precise application that automates repetitive clicking tasks with speed and control.
     </p>
     <p>
       Ideal for developers, gamers, and productivity enthusiasts, our <strong>autoclicker</strong> eliminates manual repetition
-      and increases efficiency. Just as Image-Cut optimizes images, Autoclik.net optimizes time — both built on the same principle:
+      and increases efficiency. Just as Image Cut optimizes images, Autoclik.net optimizes time — both built on the same principle:
       <em>save time, improve performance, and empower users</em>.
     </p>
 
-    <h2>Our Mission</h2>
+    <h2>Looking Forward</h2>
     <p>
       From image compression to automation, our goal remains constant — to deliver simple, intelligent, and powerful tools that help users
       achieve more with less effort. We continuously refine our technology to align with the latest web standards, ensuring everything we build
       remains fast, secure, and intuitive.
     </p>
-    <p>
-      Together, <strong>Image-Cut</strong> and <a href="https://www.autoclik.net" target="_blank">Autoclik.net</a>
-      represent a single vision: helping people create and perform better in the digital world.
-    </p>
   </main>
 
   <footer>
     <p>
-      &copy; <span id="year"></span> Image-Cut. All rights reserved. |
-      <a href="/">Home</a> •
-      <a href="/about">About</a> •
+      &copy; <span id="year"></span> Image Cut. All rights reserved. |
+      <a href="/">Home</a> 
+      <a href="/about">About</a> 
       <a href="mailto:contact@image-cut.com">Contact</a>
     </p>
   </footer>
@@ -110,6 +114,5 @@
     // Auto-update year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-  <script src="cookie-logic.js"></script>
 </body>
 </html>

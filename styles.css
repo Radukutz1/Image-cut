@@ -262,6 +262,10 @@ main.text-page { max-width: 850px; margin: 140px auto 60px; padding: 0 24px; lin
     transform: translateY(0); /* Lands in final position */
   }
 }
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
 /* --- 7. Size Compressor Styles (File Lists & Progress) --- */
 .file-list { margin-top: 20px; max-height: 300px; overflow-y: auto; }
