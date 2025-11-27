@@ -36,6 +36,11 @@
       "source": "/privacy.html",
       "destination": "/privacy",
       "permanent": true
+    },
+    {
+      "source": "/cropper.html",
+      "destination": "/cropper",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -62,6 +67,10 @@
     {
       "source": "/about",
       "destination": "about.html"
+    },
+    {
+      "source": "/cropper",
+      "destination": "cropper.html"
     },
       {
       "source": "/",

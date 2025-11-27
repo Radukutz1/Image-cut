@@ -59,4 +59,11 @@
     <priority>0.5</priority>
   </url>
 
+<!-- Image Cropper-->
+<url>
+  <loc>https://www.image-cut.com/cropper</loc>
+  <lastmod>2025-27-11</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
 </urlset>

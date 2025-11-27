@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0e27" />
+  
+  <link rel="canonical" href="https://image-cut.com/cropper" />
+
+  <title>Image Cropper - Crop & Cut Photos Online | Image Cut</title>
+  
+  <meta name="description" content="Crop images online easily. Cut photos for Instagram, YouTube thumbnails, and passports. Free, secure, and private tool—images are processed in your browser." />
+  
+  <meta name="keywords" content="crop image online, photo cutter, cut image, image cropper, resize and crop, instagram cropper, free photo crop, image cut" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Image Cropper - Crop Photos Online | Image Cut" />
+  <meta property="og:description" content="Crop images locally in your browser. Perfect for social media posts, profile pics, and passports. Private and free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://image-cut.com/cropper" />
+  <meta property="og:image" content="images/og-crop.jpg" /> <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Image Cropper - Crop Photos Online | Image Cut">
+  <meta name="twitter:description" content="Crop images locally in your browser. Perfect for social media posts, profile pics, and passports. Private and free.">
+  <meta name="twitter:image" content="images/og-crop.jpg">
+
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7617954284506964" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="top-nav">
+    <a href="/" class="logo">
+      <img src="images/imagecutlogo.png" alt="Image Cut Logo">
+      <span class="logo-text">Image Cut</span>
+    </a>
+    <div class="nav-buttons">
+      <button class="nav-btn" onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+      <button class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Compress</button>
+      <button class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert</button>
+      <button class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i>JPG to PDF</button>
+      <button class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress-arrows-alt"></i> Size Compress</button>
+      <button class="nav-btn active" onclick="location.href='/cropper'"><i class="fas fa-crop-alt"></i>Cropper</button>
+    </div>
+  </div>
+
+    <main class="tool-page">
+    
+    <div class="intro-section">
+      <h2>Crop Images Online</h2>
+      <p>Trim, frame, and resize photos for social media, passports, or web design directly in your browser.</p>
+    </div>
+
+    <div class="container">
+        
+        <h1><i class="fas fa-crop-alt"></i> Image Cropper</h1>
+        
+        <div class="upload-area" id="upload-step">
+            <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; margin-bottom: 15px; color: var(--accent);"></i>
+            <h3>Upload an Image to Cut</h3>
+            <p>Drag & drop or click to upload</p>
+            <input type="file" id="image-upload" accept="image/*" class="file-input-button">
+        </div>
+
+        <div class="editor-section" id="editor-step" style="display:none;">
+            
+            <div class="image-stage">
+                <img id="image-target" src="" alt="Image to crop">
+            </div>
+
+            <div class="toolbar">
+                <div class="tool-group">
+                    <span>Ratio:</span>
+                    <button type="button" class="btn" onclick="setRatio(NaN)">Free</button>
+                    <button type="button" class="btn" onclick="setRatio(1)">Square</button>
+                    <button type="button" class="btn" onclick="setRatio(16/9)">16:9</button>
+                    <button type="button" class="btn" onclick="setRatio(4/5)">4:5</button>
+                </div>
+
+                <div class="tool-group">
+                    <span>Rotate:</span>
+                    <button type="button" class="btn" onclick="rotateImage(-90)" title="Rotate Left"><i class="fas fa-undo"></i></button>
+                    <button type="button" class="btn" onclick="rotateImage(90)" title="Rotate Right"><i class="fas fa-redo"></i></button>
+                </div>
+
+                <div class="tool-group">
+                    <span>Zoom:</span>
+                    <button type="button" class="btn" onclick="zoomImage(0.1)"><i class="fas fa-search-plus"></i></button>
+                    <button type="button" class="btn" onclick="zoomImage(-0.1)"><i class="fas fa-search-minus"></i></button>
+                </div>
+
+                <div class="action-group">
+                    <button type="button" class="btn btn-secondary" onclick="resetCropper()">Reset</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadImage()"><i class="fas fa-download"></i> Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content-info">
+      <h2>About Image Cut’s Cropper</h2>
+      <p>
+        <strong>Image Cut’s Free Online Photo Cropper</strong> is designed to help you perfect your image composition instantly. 
+        Unlike complex desktop software, our tool allows you to trim edges, adjust framing, and correct aspect ratios 
+        without uploading your files to a cloud server.
+      </p>
+      <p>
+        Whether you are removing unwanted background distractions, focusing on a specific subject, or preparing images 
+        for a specific social media platform, our "darkroom" style editor gives you pixel-perfect control.
+      </p>
+
+      <h2>Mastering Image Composition</h2>
+      <p>
+        Cropping is the most powerful tool in photography. It allows you to re-frame a shot after it has been taken. 
+        By using the <strong>Rule of Thirds</strong> (visible in our grid overlay), you can shift the focus of your image 
+        to create a more balanced and professional look.
+      </p>
+
+      <h3>Common Aspect Ratios Explained</h3>
+      <p>Not sure which setting to choose? Here is a quick guide to the presets included in our tool:</p>
+      
+      <ul style="text-align:left; max-width:700px; margin:20px auto; color:#cccccc; list-style: disc inside;">
+        <li><strong>Square (1:1):</strong> The classic format. Perfect for <strong>Instagram posts</strong>, profile pictures (avatars), and product thumbnails.</li>
+        <li><strong>Portrait (4:5):</strong> The ideal vertical crop for Instagram to maximize screen real estate on mobile devices without getting cut off.</li>
+        <li><strong>Landscape (16:9):</strong> The standard for <strong>YouTube thumbnails</strong>, Facebook link previews, and full-screen desktop wallpapers.</li>
+        <li><strong>Free Cut:</strong> No restrictions. Drag the handles to crop exactly what you want, removing random photobombers or messy edges.</li>
+      </ul>
+
+      <h3>Privacy & Quality First</h3>
+      <p>
+        Most online croppers upload your photo to a server, process it, and send it back. This takes time and risks your privacy. 
+        <strong>Image Cut processes everything locally.</strong> 
+      </p>
+      <p>
+        This means your high-resolution photos are cropped using your own browser's engine. The result? 
+        <strong>Zero quality loss</strong> from upload compression and 100% data security. Your images never leave your device.
+      </p>
+    </section>
+
+  </main>
+     <footer class="privacy-footer">
+   
+    <p>&copy; 2025 Image Cut | 
+      <a href="/privacy">Privacy Policy</a> 
+      <a href="/about"> About us</a>
+      <a href="mailto:contact@image-cut.com">Contact</a>
+    </p>
+    <p>Your files are processed locally. Nothing is uploaded or stored — 100% secure and private.</p>
+  
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+    <script>
+        // DOM Elements
+        const uploadInput = document.getElementById('image-upload');
+        const imageTarget = document.getElementById('image-target');
+        const uploadStep = document.getElementById('upload-step');
+        const editorStep = document.getElementById('editor-step');
+        
+        let cropper; // Variable to store the cropper instance
+
+        // 1. Handle File Upload
+        uploadInput.addEventListener('change', function (e) {
+            const files = e.target.files;
+            
+            if (files && files.length > 0) {
+                const file = files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    // Hide upload step, show editor
+                    uploadStep.style.display = 'none';
+                    editorStep.style.display = 'block';
+
+                    // Set image source
+                    imageTarget.src = e.target.result;
+
+                    // Initialize Cropper (Destroy old instance if exists)
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+                    
+                    cropper = new Cropper(imageTarget, {
+                        viewMode: 1, 
+                        dragMode: 'move',
+                        autoCropArea: 0.8,
+                        responsive: true,
+                        background: false, // We handle background in CSS
+                    });
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 2. Toolbar Functions
+        function setRatio(ratio) {
+            if (cropper) cropper.setAspectRatio(ratio);
+        }
+
+        function rotateImage(deg) {
+            if (cropper) cropper.rotate(deg);
+        }
+
+        function zoomImage(amount) {
+            if (cropper) cropper.zoom(amount);
+        }
+
+        function resetCropper() {
+            if (cropper) cropper.reset();
+        }
+
+        // 3. Download Function
+        function downloadImage() {
+            if (!cropper) return;
+
+            // Get the cropped canvas
+            const canvas = cropper.getCroppedCanvas({
+                maxWidth: 4096, 
+                maxHeight: 4096,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high',
+            });
+
+            // Convert to download link
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'image-cut-result.jpg'; 
+                document.body.appendChild(a);
+                a.click();
+                
+                // Cleanup
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/jpeg', 0.95); 
+        }
+    </script>
+</body>
+</html>

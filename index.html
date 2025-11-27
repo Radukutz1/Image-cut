@@ -7,21 +7,21 @@
   
   <link rel="canonical" href="https://www.image-cut.com/" />
 
-  <title>Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs</title>
-  <meta name="description" content="Welcome to Image Cut — your free online toolkit for image compression, format conversion, and PDF creation. Fast, private, and easy to use for JPG, PNG, WebP, and more.">
-  <meta name="keywords" content="image compressor, image converter, JPG to PDF, image resize, online tools, free, image optimization, Image Cut">
+  <title>Image Cut | Free Online Image Tools — Compress, Crop & Convert</title>
+  <meta name="description" content="Welcome to Image Cut — your free online toolkit for image compression, cropping, conversion, and PDF creation. Fast, private, and easy to use." />
+  <meta name="keywords" content="image compressor, image cropper, image converter, JPG to PDF, image resize, online tools, free, image optimization, Image Cut" />
   <meta name="robots" content="index, follow" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <meta property="og:title" content="Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs">
-  <meta property="og:description" content="Compress, resize, and convert images online with Image Cut. Free, private, and lightning-fast — optimize JPG, PNG, and WebP files instantly.">
+  <meta property="og:title" content="Image Cut | Free Online Image Tools — Compress, Crop & Convert">
+  <meta property="og:description" content="Compress, crop, resize, and convert images online with Image Cut. Free, private, and lightning-fast — optimize JPG, PNG, and WebP files instantly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://image-cut.com/">
   <meta property="og:image" content="images/og-image.jpg">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Image Cut | Free Online Image Tools — Compress, Convert & Create PDFs">
-  <meta name="twitter:description" content="Free, fast, and secure online tools for compressing, converting, and exporting images to PDF.">
+  <meta name="twitter:title" content="Image Cut | Free Online Image Tools — Compress, Crop & Convert">
+  <meta name="twitter:description" content="Free, fast, and secure online tools for compressing, cropping, converting, and exporting images to PDF.">
   <meta name="twitter:image" content="images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -48,11 +48,12 @@
       <span class="logo-text">Image Cut</span>
     </a>
     <div class="nav-buttons">
-       <button class="nav-btn active" onclick="location.href='/'"><i class="fas fa-home"></i> Home </button>
+      <button class="nav-btn active" onclick="location.href='/'"><i class="fas fa-home"></i> Home </button>
       <button class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Compress</button>
       <button class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert</button>
       <button class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF Convert</button>
-       <button class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress-arrows-alt"></i> Size Compress</button>
+      <button class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress-arrows-alt"></i> Size Compress</button>
+      <button class="nav-btn" onclick="location.href='/cropper'"><i class="fas fa-crop-alt"></i> Cropper</button>
     </div>
   </div>
 
@@ -62,21 +63,29 @@
       <p>
         Welcome to <strong>Image Cut</strong> — a fast, secure, and easy-to-use toolkit 
         designed for creators, professionals, and students. Whether you need to 
-        <strong>compress high-resolution images</strong>, <strong>convert image formats</strong>, 
-        or <strong>create PDFs</strong> instantly, Image Cut helps you do it all in your browser — 
+        <strong>crop photos</strong>, <strong>compress high-resolution images</strong>, or 
+        <strong>convert formats</strong>, Image Cut helps you do it all in your browser — 
         without uploads, tracking, or watermarks.
       </p>
     </section>
 
     <section class="intro-content">
       <p>
-        Image Cut lets you compress, convert, and export images instantly — 
+        Image Cut lets you crop, compress, and convert images instantly — 
         all processed locally in your browser for 100% privacy. 
         No uploads. No waiting. Just fast, secure image tools for everyone.
       </p>
     </section>
 
     <section class="tool-grid">
+      
+      <div class="tool-card">
+        <i class="fas fa-crop-alt"></i>
+        <h3>Image Cropper</h3>
+        <p>Trim edges, fix framing, or cut photos for social media. Square, portrait, or landscape crops in seconds.</p>
+        <button class="tool-btn" onclick="location.href='/cropper'">Use Cropper</button>
+      </div>
+
       <div class="tool-card">
         <i class="fas fa-scissors"></i>
         <h3>Image Compressor</h3>
@@ -101,9 +110,10 @@
       <div class="tool-card">
         <i class="fas fa-compress-arrows-alt"></i>
         <h3>Image Size Compressor</h3>
-        <p>Adjust and optimize your image dimensions while maintaining quality. Resize large files for web, email, or thumbnails in seconds.</p>
+        <p>Adjust and optimize your image dimensions while maintaining quality. Resize large files for web or email.</p>
         <button class="tool-btn" onclick="location.href='/sizecompress'">Use Size Compressor</button>
       </div>
+
     </section>
 
     <section class="content-info">
@@ -115,7 +125,7 @@
       </p>
       <p>
         Whether you're a designer, photographer, or student, our goal is to help you
-        <strong>compress, convert, and create</strong> images without sacrificing privacy or quality.
+        <strong>cut, compress, and create</strong> images without sacrificing privacy or quality.
       </p>
       <p>
         Our mission is to offer lightweight, free, and secure image tools you can rely on — 
@@ -126,6 +136,11 @@
     <section class="features-overview">
       <h2>What You Can Do with Image Cut</h2>
       <div class="features-grid">
+        <div class="feature">
+            <i class="fa-solid fa-crop-alt"></i>
+            <h3>Crop & Cut</h3>
+            <p>Trim photos to the perfect aspect ratio for Instagram, YouTube, or Passport photos.</p>
+          </div>
         <div class="feature">
           <i class="fa-solid fa-compress"></i>
           <h3>Compress Images</h3>
@@ -203,6 +218,5 @@
     </p>
     <p>Your files are processed locally. Nothing is uploaded or stored — 100% secure and private.</p>
   </footer>
-  <script src="cookie-logic.js"></script>
 </body>
 </html>
