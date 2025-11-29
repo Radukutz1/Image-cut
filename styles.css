@@ -1,5 +1,5 @@
 /* =========================================================
-    MASTER STYLESHEET (Image Cut)
+   MASTER STYLESHEET (Image Cut)
    ========================================================= */
 
 /* --- 1. Global Variables & Base --- */
@@ -120,6 +120,7 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 0 15px rgba(166,193,238,0.4); /* Clean glow for active item */
   border-color: var(--accent);
 }
+
 /* --- 3. Buttons & Inputs (Shared) --- */
 .btn-primary, .tool-btn, #convertButton, #compressButton, #downloadButton, button.action {
   background: linear-gradient(90deg, var(--accent), var(--accent-glow));
@@ -184,10 +185,61 @@ main.text-page { max-width: 850px; margin: 140px auto 60px; padding: 0 24px; lin
 }
 .upload-area i, .drop-zone i { font-size: 3rem; color: var(--accent); margin-bottom: 15px; display: block; }
 
-/* --- 5. Homepage Specifics (index.html) --- */
-.hero { text-align: center; padding: 60px 20px; max-width: 800px; margin: auto; }
-.hero h1 { font-size: 2.5rem; margin-bottom: 16px; animation: fadeSlideUp 1s ease-out; }
-.hero p { font-size: 1.1rem; color: var(--muted); animation: fadeSlideUp 1.2s ease-out; }
+/* --- 5. Homepage Specifics (Updated to Sticker Badge Style) --- */
+
+.hero {
+  text-align: center;
+  padding: 80px 20px 40px; /* More top padding for breathing room */
+  max-width: 800px;
+  margin: auto;
+}
+
+/* The Title */
+.hero h1 {
+  font-size: 4rem; /* Big and bold */
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+  display: flex;       /* Keeps them aligned */
+  align-items: center;
+  justify-content: center;
+  gap: 15px;           /* Space between Image and Cut */
+  flex-wrap: wrap;     /* Wraps on tiny mobile screens */
+  animation: fadeSlideUp 1s ease-out;
+}
+
+/* The "Cut" Badge */
+.hero-badge {
+  background: linear-gradient(135deg, var(--accent), var(--accent-glow)); /* Your blue-pink gradient */
+  color: #0a0e27; /* Dark text for contrast */
+  padding: 5px 25px;
+  border-radius: 12px;
+  transform: rotate(-3deg); /* The "Sticker" tilt */
+  box-shadow: 0 10px 25px rgba(166, 193, 238, 0.5); /* Glow behind the badge */
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hero-badge:hover {
+  transform: rotate(0deg) scale(1.05); /* Interactive pop on hover */
+}
+
+/* The Description Text (More readable) */
+.hero p {
+  font-size: 1.2rem;
+  color: #d1d5db; /* Softer grey than pure white */
+  line-height: 1.8;
+  max-width: 600px; /* Constrains width so lines aren't too long */
+  margin: 0 auto;
+  animation: fadeSlideUp 1.2s ease-out;
+}
+
+/* Highlight keywords in the text */
+.hero p strong {
+  color: var(--accent);
+  font-weight: 600;
+}
 
 @keyframes fadeSlideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
 
@@ -203,7 +255,7 @@ main.text-page { max-width: 850px; margin: 140px auto 60px; padding: 0 24px; lin
   margin: 40px auto;
   
   /* Crucial: Add padding top/bottom so the hover "pop" effect 
-     doesn't get cut off by the overflow hidden */
+      doesn't get cut off by the overflow hidden */
   padding: 40px 0; 
   
   /* Fade mask on sides for a premium look */
@@ -286,9 +338,11 @@ main.text-page { max-width: 850px; margin: 140px auto 60px; padding: 0 24px; lin
   }
 }
 
-.content-info { margin: 60px auto; text-align: center; max-width: 800px; padding: 0 20px; opacity: 0; 
+.content-info { 
+  margin: 60px auto; text-align: center; max-width: 800px; padding: 0 20px; opacity: 0; 
   animation: fadeSlideUp 0.8s ease-out forwards; 
-  animation-delay: 0.5s;}
+  animation-delay: 0.5s;
+}
 .content-info h2 { color: var(--accent); margin-bottom: 15px; }
 .content-info p { color: #ccc; line-height: 1.6; margin-bottom: 20px; }
 
@@ -329,28 +383,19 @@ main.text-page { max-width: 850px; margin: 140px auto 60px; padding: 0 24px; lin
 .text-page p, .text-page ul { margin-bottom: 20px; color: #d0d0d0; }
 .text-page li { margin-bottom: 10px; }
 
-/* About Page Animations */
-.about-hero h1, .about-hero h2, .about-hero p, .about-hero ul {
-  opacity: 0; transform: translateY(20px); animation: fadeUp 1s ease-out forwards;
+/* About Page Animations (Updated to use fadeSlideUp) */
+.text-page h1, 
+.text-page h2, 
+.text-page p, 
+.text-page ul {
+  opacity: 0; /* Start hidden */
+  animation: fadeSlideUp 0.8s ease-out forwards;
 }
-.about-hero > *:nth-child(1) { animation-delay: 0.1s; }
-.about-hero > *:nth-child(2) { animation-delay: 0.2s; }
-.about-hero > *:nth-child(3) { animation-delay: 0.3s; }
-.about-hero > *:nth-child(4) { animation-delay: 0.4s; }
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px); /* Starts 40px lower */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* Lands in final position */
-  }
-}
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+
+.text-page h1 { animation-delay: 0.1s; }
+.text-page > p:first-of-type { animation-delay: 0.2s; }
+.text-page h2 { animation-delay: 0.3s; }
+.text-page p:not(:first-of-type) { animation-delay: 0.4s; }
 
 /* --- 7. Size Compressor Styles (File Lists & Progress) --- */
 .file-list { margin-top: 20px; max-height: 300px; overflow-y: auto; }
@@ -448,7 +493,16 @@ footer a:hover {
   .logo { width: 100%; justify-content: center; margin-bottom: 5px; }
 
   main.homepage, main.tool-page { margin-top: 130px; }
-  .hero h1 { font-size: 1.8rem; }
+  
+  /* Update Hero for Mobile to match Badge Style */
+  .hero h1 { 
+    font-size: 2.8rem; 
+  }
+  .hero-badge {
+    padding: 2px 15px;
+    margin-top: 5px; /* Allow badge to wrap nicely */
+  }
+  
   .container { padding: 20px; }
   .tool-controls select, .tool-controls input { max-width: 100%; }
 
@@ -467,6 +521,7 @@ footer a:hover {
 }
 .cookie-banner p { margin: 0 0 15px; font-size: 0.9rem; color: #ccc; }
 .cookie-actions { display: flex; gap: 10px; justify-content: center; }
+
 /* =========================================================
    13. --- Image Cropper Specifics ---
    ========================================================= */
