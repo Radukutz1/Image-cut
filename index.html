@@ -48,13 +48,28 @@
       <span class="logo-text">Image Cut</span>
     </a>
     <div class="nav-buttons">
-      <button class="nav-btn active" onclick="location.href='/'"><i class="fas fa-home"></i> Home </button>
-      <button class="nav-btn" onclick="location.href='/compress'"><i class="fas fa-scissors"></i> Compress</button>
-      <button class="nav-btn" onclick="location.href='/convert'"><i class="fas fa-sync-alt"></i> Convert</button>
-      <button class="nav-btn" onclick="location.href='/pdfconvert'"><i class="fas fa-file-pdf"></i> PDF Convert</button>
-      <button class="nav-btn" onclick="location.href='/sizecompress'"><i class="fas fa-compress-arrows-alt"></i> Size Compress</button>
-      <button class="nav-btn" onclick="location.href='/cropper'"><i class="fas fa-crop-alt"></i> Cropper</button>
+  
+  <a href="/" class="nav-btn active"><i class="fas fa-home"></i> Home</a>
+
+  <div class="nav-dropdown">
+    <button class="nav-btn dropdown-trigger">
+      <i class="fas fa-layer-group"></i> Our Tools <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i>
+    </button>
+    
+    <div class="dropdown-menu">
+      <a href="/cropper" class="dropdown-item"><i class="fas fa-crop-alt"></i> Cropper</a>
+      <a href="/compress" class="dropdown-item"><i class="fas fa-scissors"></i> Compressor</a>
+      <a href="/convert" class="dropdown-item"><i class="fas fa-sync-alt"></i> Converter</a>
+      <a href="/pdfconvert" class="dropdown-item"><i class="fas fa-file-pdf"></i> PDF Creator</a>
+      <a href="/sizecompress" class="dropdown-item"><i class="fas fa-compress-arrows-alt"></i> Resizer</a>
     </div>
+  </div>
+
+  <a href="/about" class="nav-btn"><i class="fas fa-info-circle"></i> About Us</a>
+
+  <a href="mailto:contact@image-cut.com" class="nav-btn"><i class="fas fa-envelope"></i> Contact</a>
+
+</div>
   </div>
 
   <main class="homepage">
