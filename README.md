@@ -14,8 +14,10 @@ Because all processing is client-side, **no files are ever uploaded to a server*
 * **🔄 Format Converter:** Instantly convert between JPG, PNG, WebP, and AVIF.
 * **📏 Pixel Resizer:** Adjust image width and height dimensions specifically for social media or web standards.
 * **📄 JPG to PDF:** Merge images, text files, and Word documents into a single PDF using `jspdf` and `pdf-lib`.
+* **   Image Cropper: ** Crop images, to the desired size.
 * **🔒 Privacy First:** Zero server-side processing. Your data stays on your device.
 * **🎨 Modern UI:** Fully responsive, dark-themed design with glassmorphism effects.
+
 
 ## 📂 Project Structure
 
@@ -35,5 +37,6 @@ image-cut/
 ├── pdfconv.html            # JPG/Doc to PDF tool
 ├── about.html              # About Us page
 ├── privacy.html            # Privacy Policy
+└── cropper.html            # Image Cropper         
 └── README.md               # Documentation
 
